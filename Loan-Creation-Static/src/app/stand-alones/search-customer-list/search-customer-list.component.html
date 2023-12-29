@@ -1,0 +1,260 @@
+<form [formGroup]="form">
+    <div class="card p-24">
+        <div class="row g-3">
+            <div class="col-md-2 mb-16">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="Customer Name" id="customerName"
+                        name="customerName" autocomplete="off" formControlName="customerName" appAlphabet>
+                    <label for="customerName">Customer name</label>
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-16">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="Mobile Number" id="mobileNumber" appNumericOnly
+                        name="mobileNumber" autocomplete="off" formControlName="mobileNumber" [maxlength]="10"
+                        appNumericOnly
+                        [ngClass]="{ 'is-invalid':  (form.controls['mobileNumber'].errors?.['pattern']) }">
+
+                    <label for="mobileNumber">Mobile number <span class="text-danger"></span></label>
+                </div>
+                <div>
+                    <span id="mobileInvalidError" class="text-danger int-10"
+                        *ngIf="form.controls['mobileNumber'].errors?.['pattern']">
+                        Mobile number is invalid
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-16">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="House Name" id="houseName" name="houseName"
+                        autocomplete="off" formControlName="houseName" appAlphaNumSpcl appPreventAlphanumeric
+                        appTrimWhitespace>
+                    <label for="houseName">House name <span class="text-danger"></span></label>
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-16">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="CRM Code" id="crmCode" name="crmCode"
+                        autocomplete="off" formControlName="crmCode" appAlphabet>
+                    <label for="crmCode">CRM code <span class="text-danger"></span></label>
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-16">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="Customer Code" id="customerCode"
+                        name="customerCode" autocomplete="off" formControlName="customerCode" appAlphabet>
+                    <label for="customerCode">Customer code <span class="text-danger"></span></label>
+                </div>
+            </div>
+
+
+            <!-- Place the image in the same row, inside a col-md-3 -->
+            <!-- <div class="col-md-1" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                style="cursor: pointer;">
+                Advanced Search
+            </div>
+
+            <div class="col-md-1" style="cursor: pointer;">
+                <button class="btn btn-primary" >Search</button>
+            </div> -->
+            <div class="col-md-1 mb-16 d-flex align-items-center">
+                <div style="cursor: pointer;">
+                    <button [disabled]="!form.value.customerName" mat-raised-button color="primary">Search</button>
+                </div>
+
+            </div>
+            <div class="col-md-1 mb-16 pt-20 d-flex align-items-center">
+                <!-- <button mat-mini-fab color="primary" matTooltip="Advanced Search " (click)="collapse.toggle()"
+                    [attr.aria-expanded]="!isCollapsed">
+                    <mat-icon>search</mat-icon>
+                </button> -->
+                <button mat-mini-fab color="primary" [matTooltip]="!isCollapsed ? 'Less' : 'Advanced Search'"
+                    class="custom-pointer" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">
+                    <mat-icon *ngIf="!isCollapsed">expand_less</mat-icon>
+                    <mat-icon *ngIf="isCollapsed">expand_more</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="row g-3 pt-3">
+            <div class="collaps show" id="collapseExample" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <div class="row ">
+                    <div class="col-md-12  pt_20">
+                        <div class="row">
+                            <div class="col-md-3 mt-16">
+                                <div class="form-floating">
+                                    <select class="form-select" formControlName="customerType"
+                                        placeholder="customerType" id="customerType" name="customerType">
+                                        <option selected disabled>--Select Customer Type--</option>
+                                        <option *ngFor="let customer of customerType" [value]="customer.CUST_CLASSID">{{
+                                            customer.CUST_CLASS_NAME | titlecase }}
+                                        </option>
+                                    </select>
+
+                                    <label for="customerType">Customer type</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <select class=" form-select" formControlName="taxCategory"
+                                        placeholder="Select Tax Category" id="taxCategory">
+                                        <option selected disabled>Select taxCategory</option>
+                                        <option *ngFor="let tax of taxCategory" [value]="tax.TaxId">{{
+                                            tax.TaxName | titlecase }}
+                                        </option>
+
+                                    </select>
+                                    <label for="taxCategory">Select tax category</label>
+                                </div>
+
+                            </div>
+
+                
+
+
+                            <div class=" col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <select class="form-select" id="state" name="state" formControlName="state">
+                                        <option selected disabled>Select state</option>
+                                        <option *ngFor="let state of states" [value]="state.StateId">{{state.StateName |
+                                            titlecase}}</option>
+                                    </select>
+                                    <label for="state">Select state</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="road" id="road" name="road"
+                                        autocomplete="off" formControlName="road" appAlphabet>
+                                    <label for="road">Road/Lane/Area/Via
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="row mt-16">
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="M Power card" id="mPowerCard"
+                                        name="mPowerCard" autocomplete="off" formControlName="mPowerCard" appAlphabet>
+                                    <label for="mPowerCard">Power card
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder=" Privileage Card"
+                                        id="privileageCard" name="privileageCard" autocomplete="off"
+                                        formControlName="privileageCard" appAlphabet>
+                                    <label for="privileageCard">Privileage card
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="PAN" id="pan" appAlphaNumCopy
+                                        maxlength="10" appPreventAlphanumeric appAlphaNumeric
+                                        [ngClass]="{ 'is-invalid':( form.controls['pan'].errors?.['pattern'])}"
+                                        oninput="this.value = this.value.toUpperCase()" autocomplete="off"
+                                        formControlName="pan" name="pan">
+                                    <label for="activeLoans">PAN
+                                    </label>
+                                </div>
+                                <div>
+                                    <span id="panInvalidError" class="text-danger int-10"
+                                        *ngIf="form.controls['pan'].errors?.['pattern']">
+                                        PAN is invalid
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <select class="form-select" formControlName="customerStatus"
+                                        placeholder="Customer Status*" id="customerStatus" name="customerStatus">
+                                        <option selected disabled>--Select Customer Status--</option>
+                                        <option *ngFor="let status of customerStatus" [value]="status.StatusId">
+                                            {{status.Status | titlecase}}</option>
+
+                                    </select>
+
+                                    <label for="customerStatus"> Select customer status</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row g-3 ">
+                    <div class="col-md-12">
+                        <div class="row mt-16">
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <select class="form-select" formControlName="organizationLevel"
+                                        placeholder="Organization Level*" id="organizationLevel"
+                                        name="organizationLevel">
+                                        <option selected disabled>--Branch--</option>
+                                        <option *ngFor="let orglevel of organizationLevel"
+                                            [value]="orglevel.organization_id">{{orglevel.organization_name |
+                                            uppercase}}</option>
+
+                                    </select>
+
+                                    <label for="customerStatus"> Select organization level</label>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating ">
+                                    <input type="text" class="form-control" placeholder="Organization Unit Code*"
+                                        autocomplete="off" formControlName="organizationCode" appNumericOnly
+                                        id="organizationCode" name="organizationCode">
+                                    <label for="organizationCode">Organization code
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-3 mb-16">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Organization Unit"
+                                        autocomplete="off" formControlName="organizationUnit" appNumericOnly
+                                        id="organizationUnit" name="organizationUnit">
+                                    <label for="organizationUnit">Organization unit number
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</form>

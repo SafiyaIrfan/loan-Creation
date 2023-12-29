@@ -1,0 +1,6 @@
+<div class="select-container">
+    <ng-select #ngSelectRef [items]="itemsArray" bindLabel="PTYPE_SHORT_NAME" bindObject="true" [(ngModel)]="selectedValue"
+        [searchable]="true" (change)="onSelectionChange()" [placeholder]="placeholder" [clearable]="false"
+        (focus)="onFocus()" class="custom" (keydown.Tab)="onTabKeyDown($event)">
+    </ng-select>
+</div>

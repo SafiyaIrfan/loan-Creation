@@ -1,0 +1,174 @@
+<div class="modal-body">
+    <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"
+        (click)="dialogRef.close()"></button>
+    <p>&nbsp;</p>
+    <!-- Grid start -->
+    <div class="col-lg-12 m_b">
+        <div class="card">
+            <div class="card-header d-flex">
+                <div class="col-lg-7">
+                    <h5 class=" fw-normal mb-0">Customer Search</h5>
+                </div>
+                <div class="col-lg-5 d-flex">
+                    <div class="dropdown ms-auto bd-highlight me-1">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="fixed-header_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="row g-4 align-items-center mb-3">
+                        <div class="col-md-12 col-lg-2 ">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="custData"
+                                (keyup)="onKeyup($event)" (keyup.enter)="searchCustomer()"
+                                placeholder="Cust. Name / Code" aria-controls="" appAlphaNumeric maxlength="20"
+                                tabindex="1">
+                                <!-- <label for="Cust. Name / Code">Cust. Name / Code
+                                </label> -->
+                        </div>
+                        <div class="col-md-12 col-lg-2 form-floating">
+                            <input type="text" class="form-control form-control-sm" placeholder="CRM Cust. Code"
+                                [(ngModel)]="custCode" (keyup)="onKeyup($event)" (keyup.enter)="searchCustomer()"
+                                aria-controls="" appAlphaNumeric maxlength="9">
+                                <label for="CRM Cust. Code">CRM Cust. Code
+                                </label>
+                        </div>
+                        <div [ngClass]=" mobile.errors?.['pattern'] ? 'mobile-msg' : '' " class="col-md-12 col-lg-2 form-floating">
+                            <input type="text" class="form-control form-control-sm" id="mobile" [(ngModel)]="Mobile"
+                                [pattern]="'^[6-9][0-9]*$'" (keyup)="onKeyup($event)" (keyup.enter)="searchCustomer()"
+                                placeholder="Mobile No" aria-controls="" maxlength="10" #mobile="ngModel"
+                                appNumericOnly>
+                                <label for="Mobile No">Mobile No
+                                </label>
+
+                            <span class="text-danger error  " *ngIf="mobile.errors?.['pattern']">
+                                <small>*Invalid mobile format.</small>
+                            </span>
+
+                        </div>
+
+
+                        <div class="col-md-12 col-lg-2 form-floating">
+                            <input type="text" class="form-control form-control-sm" placeholder="House Name"
+                                [(ngModel)]="houseName" (keyup)="onKeyup($event)" (keyup.enter)="searchCustomer()"
+                                aria-controls="" appAlphaNumSpcl maxlength="25">
+                                <label for="House Name">House Name
+                                </label>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="pt-1">
+                            <!-- <div class="form-check form-check-success pt-1"> -->
+                                <!-- <input class="form-check-input" type="checkbox" id="advanceSearch"
+                                    (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">
+                                <label class="form-check-label fw-normal" for="advanceSearch">
+                                    Advanced Search
+                                </label> -->
+                                <label for="advanceSearch" (click)="collapse.toggle();clearForm()" [attr.aria-expanded]="!isCollapsed">
+                                    Advanced Search
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-2 d-flex justify-content-end">
+                            <i *ngIf="isCollapsed" class="mdi mdi-magnify fs-22 photo-upld-prmry text-primary bd-highlight me-1"
+                                (click)="searchCustomer()" matTooltip="Search"></i>
+                            <i class="mdi mdi-account-plus-outline fs-22 photo-upld-scs text-success bd-highlight"
+                                matTooltip="Add customer"></i>
+                        </div>
+                    
+                        <form [formGroup]="advancedSearchForm">
+                            <div class="collaps show animate__animated animate__fadeInDown animate__slow-2s" id="collapseExample"
+                                #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                                <div class="row g-4 align-items-center mb-3">
+                                    <div class="col-md-12 col-lg-2 ">
+                                        <select formControlName="CustomerType" class="form-select" id="floatingSelect" >
+                                            <option selected disabled>Customer Type</option>
+                                            (keyup.enter)="searchCustomer()"
+                                            <option *ngFor="let customer of customerType" [value]="customer.CUST_CLASSID"
+                                                (keyup.enter)="searchCustomer()">{{
+                                                customer.CUST_CLASS_NAME | titlecase }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2">
+                                        <select formControlName="CustomerStatus" class="form-select" id="floatingSelect" aria-label="Customer Status">
+                                            <option selected disabled>Customer Status
+                                            </option>
+                                            (keyup.enter)="searchCustomer()"
+                                            <option *ngFor="let status of customerStatus" [value]="status.StatusId">
+                                                {{status.Status | titlecase}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2">
+                                        <select formControlName="State" class="form-select" id="floatingSelect" aria-label="State">
+                                            <option selected disabled>State</option>
+                                            <option *ngFor="let state of states" [value]="state.StateId" (keyup.enter)="searchCustomer()">
+                                                {{state.StateName |
+                                                titlecase}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2 form-floating">
+                                        <input formControlName="RoadLaneArea" type="text" class="form-control form-control" placeholder="Road/Lane/Area" appAlphnumspl
+                                            aria-controls="" (keyup.enter)="searchCustomer()">
+                                        <label for="Road/Lane/Area">Road/Lane/Area
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2">
+                                        <select formControlName="OrganizationLevel" class="form-select" id="floatingSelect" aria-label="Organization Level"
+                                            (keyup.enter)="searchCustomer()">
+                                            <option selected>Organization Level </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2 form-floating">
+                                        <input formControlName="OrgUnitCode" type="text" class="form-control form-control" placeholder="Org.Unit Code" appNumericOnly
+                                            aria-controls="" (keyup.enter)="searchCustomer()">
+                                        <label for="Org.Unit Code">Org.Unit Code
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2 form-floating">
+                                        <input formControlName="OrganizationUnit" type="text" class="form-control form-control" placeholder="Organization Unit" appAlphaNumeric
+                                            aria-controls="" (keyup.enter)="searchCustomer()">
+                                        <label for="Organization Unit">Organization Unit
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 col-lg-2">
+                                        <i *ngIf="!isCollapsed" class="mdi mdi-magnify fs-22 photo-upld-prmry text-primary bd-highlight me-1"
+                                            (click)="searchCustomer()" matTooltip="Search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                
+
+                    <div class="row g-2 align-items-center  mb-3 spinner-height">
+                        <button type="button" class="btn btn-load" *ngIf="signLoader && !isVisible">
+                            <span class="spinner-border" role="status">
+                            </span>
+                            <span class="icon-on"><i class="align-bottom me-1"></i>
+                                Searching</span>
+                        </button>
+                        <div class="col-lg-12 mb-3" *ngIf="!isVisible && !signLoader">
+                            <div class="text-center p-3 border">
+                                <img src="assets/images/no-data-icon-1.png" alt="" class="image-respnsv"><br>
+                                No Data Available
+                            </div>
+                        </div>
+                        <div class="col-lg-12 scroll" *ngIf="isVisible">
+                            <app-datatable  *ngIf="isVisible" [heading]="headingArray" [dtOptions]="dtOptions"
+                            [content]="paginatedItems" (maskedMobileNumber)="maskMobileNumber($event)" (shoowListDiv)="showListDiv($event)" (hidedListDiv)="hideListDiv()"
+                            (saveCustDetails)="saveCustomerDetails($event)"
+                            ></app-datatable>
+                       
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Grid end -->
+</div>
+<div class="modalfooter btnstyle">
+    <button type="button" mat-dialog-close class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between wraper_">
+    <div class="col-lg-10">
+        <h2 *ngIf="showTitle">Image Preview</h2>
+    </div>
+    <div class="col-lg-2 d-flex justify-content-end">
+        <mat-icon (click)="dialogRef.close()" matTooltip="Close">close</mat-icon>
+    </div>
+</div>
+<div class="row scroll">
+    <div class="col-lg-12">
+        <div class="wraper">
+            <img [src]="imgUrl" alt="preview">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,277 @@
+<div class="hstack flex-wrap gap-2 mb-3 mb-lg-0">
+
+    <!-- <p>
+        <button class="btn btn-primary btn-border m-10" (click)="onSearch()">searching</button>
+        <button class="btn btn-secondary btn-border m-10" (click)="onInfo()">info</button>
+        <button class="btn btn-success btn-border m-10" (click)="onOrder()">ordering</button>
+        <button class="btn btn-warning btn-border m-10" (click)="onPaging()">paging</button>
+      </p> -->
+</div>
+<table datatable #datatableElement [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+    class=" row-border hover table table-bordered table-striped table-hover clss">
+    <thead class="tbl-style">
+        <tr>
+            <th *ngFor="let item of heading" [ngClass]="!item.sort ? 'no-sort' : '' ">{{item.title}}</th>
+        </tr>
+    </thead>
+    <!-- <tbody>
+    <tr *ngFor="let customer of content ;let i=index">
+      <td>
+        <div class="row card-padding">
+            <div class="card ribbon-box border mb-lg-0 ml-1 mr-1">
+                
+                <div class="ribbon-two" [ngClass]="{
+                        'ribbon-two-danger': customer.riskType == 'High',
+                        'ribbon-two-warning': customer.riskType == 'Medium',
+                        'ribbon-two-success': customer.riskType == 'Low'
+                      }"><span>{{customer.riskType}}</span></div>
+                <div
+                    class="float-start col-lg-1 justify-content-center d-flex align-items-center">
+                    <button type="button"
+                        class="btn btn-icon-cus-img rounded-circle"
+                        id="page-header-notifications-dropdown"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        aria-haspopup="true" aria-expanded="false">
+                        <img src="{{customer.name | userLetterIcons}}"
+                            alt="Circle Image"
+                            class="img-circle img-no-padding img-responsive letter-icon" />
+                    </button>
+                </div>
+                <div class="col-auto cursor-pointer col-lg-10 ">
+                    <h5 class="mb-0">
+                        <a class="cust">
+                            {{ customer.name}}
+                            <span class="badge rounded-pill badge-soft-info">
+                                {{customer.crm_code }}</span>
+                        </a>
+                    </h5>
+                    <a class="cust_a">{{ customer.address }}</a>
+                    <a>
+                        <button type="button"
+                            class="btn position-relative p-0 avatar-xxs rounded-circle bg">
+                            <i class="mdi mdi-fingerprint fs-16"></i>
+                        </button>
+                        <span class="font fs-14 fw-normal"> Verified
+                        </span>
+                    </a>
+                    <a><i class="mdi mdi-whatsapp fs-16 font"></i></a>
+                    <a><i
+                            class="mdi mdi-navigation-variant-outline fs-16 text-info"></i></a>
+                    <a><i class="mdi mdi-phone-in-talk fs-16 font"></i></a>
+                    <a class="fs-14">{{ customer.phone }}</a>
+                    <br>
+                    <a>{{maskMobileNumber(customer.mobile)}},</a>
+                    <a> <i class="mdi mdi-check-circle fs-16 font"></i>Aadhar,
+                    </a>
+                    <a> <i class="mdi mdi-check-circle fs-16 font"></i>PAN</a>
+                </div>
+               
+            </div>
+        </div>
+    </td>
+    <td>
+        <span *ngIf="customer.ActiveLoans.id.length == 0"
+            class="badge bg-warning">No
+            previous loan history</span>
+        <span *ngIf="customer.ActiveLoans.id.length"
+            class="badge bg-warning">{{customer.ActiveLoans.id.length}}</span>
+        <br>
+        <span *ngIf="customer.ActiveLoans.id.length">Loan No: </span>
+        <span *ngIf=" customer.ActiveLoans.id.length">
+            <span
+                *ngFor="let loanId of customer.ActiveLoans.id.slice(0, 2); let last = last ">
+                {{ loanId }}{{ !last ? ',' : '' }}
+            </span>
+        </span>
+        <div>
+            <span matTooltip="" *ngIf="customer.ActiveLoans.id.length > 2">
+                <a class="text-info cursor-pointer" (mouseenter)="showListDiv(i)"
+                    (mouseleave)="hideListDiv()">More >>
+                    <div id="listDiv" class="list-container"
+                        *ngIf="hoveredRowIndex === i">
+                        <ul *ngIf="customer.ActiveLoans.id.length > 2">
+                            <h3><b>Outstanding Loan numbers</b></h3>
+                            <li
+                                *ngFor="let loanId of customer.ActiveLoans.id.slice(2)">
+                                {{ loanId }}
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </span>
+        </div>
+    </td>
+    <td class="text-center">
+        <button class="btn sl mat-flat-button mt-20" color="primary" mat-button
+            [matMenuTriggerFor]="menu">
+            <span>Select Transaction</span>
+            <span class="mdi mdi-chevron-down transaction-icon-style"></span>
+        </button>
+        <mat-menu #menu="matMenu">
+           
+            <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                    class="badge bg-secondary badgeSpace">Closure</span></li>
+            <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span class="badge bg-info badgeSpace">Top Up</span>
+            </li>
+            <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                    class="badge bg-warning badgeSpace">Renewal</span></li>
+            <li mat-menu-item (click)="dialogRef.close()"
+                [routerLink]="['/loan/loans']"
+                (click)="saveCustomerDetails({customerName: customer.name ,customerId:customer.code,image:customer.profile,customerAddress:customer.address,contact:customer.mobile})">
+                <span class=" badge bg-success badgeSpace">New Loan</span>
+            </li>
+            <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span class="badge bg-danger badgeSpace">Re Pay</span>
+            </li>
+        </mat-menu>
+    </td>
+    <td>
+        <ul class="ps-3">
+            <li>PEP Status is Good</li>
+        </ul>
+    </td>
+    <td>
+        <button mat-icon-button [matMenuTriggerFor]="menu1"
+            class="btn-soft-secondary" aria-label="Example icon-button with a menu">
+            <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu1="matMenu">
+            <button mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+            </button>
+
+            <button mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+        </mat-menu>
+    </td>
+    </tr>
+  </tbody> -->
+    <tbody>
+        <tr *ngFor="let customer of content ;let i=index">
+            <td>
+                <div class="row card-padding">
+                    <div class="row ">
+                        <div class="float-start col-lg-2 col-sm-2 justify-content-center d-flex flex-column align-items-center">
+                            <span type="button" class=" btn-icon-cus-img rounded-circle"
+                                id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                                <!-- <img [src]="customer.profile" class="avatar-sm rounded-circle"
+                            alt=""> -->
+                            </span>
+
+                            <img src="{{customer.name | userLetterIcons}}" alt="Circle Image"
+                                class="img-circle img-no-padding img-responsive letter-icon" />
+
+                            <span [ngClass]="{
+                        'ribbon-two-danger': customer.riskType == 'High',
+                        'ribbon-two-warning': customer.riskType == 'Medium',
+                        'ribbon-two-success': customer.riskType == 'Low'
+                      }">{{customer?.riskType}} Risk</span>
+                            <a class="taCenter"><i class="mdi mdi-whatsapp fs-16 font"></i><i
+                                    class="mdi mdi-navigation-variant-outline fs-16 text-info"></i></a>
+                        </div>
+                        <div class="col-auto cursor-pointer col-lg-10 ">
+                            <h5 class="mb-0">
+                                <a class="cust">
+                                    {{ customer.name}}
+                                    <span class="badge rounded-pill badge-soft-info">
+                                        {{customer.crm_code }}</span>
+                                </a>
+                            </h5>
+                            <ul class="ul">
+                                <!-- <li> <a class="fs-14">{{ customer.phone }}</a></li> -->
+                                <li> <a>
+                                        <button type="button"
+                                            class="btn position-relative p-0 avatar-xxs rounded-circle bg">
+                                            <i class="mdi mdi-fingerprint fs-16"></i>
+                                        </button>
+                                        <span class="font fs-14 fw-normal"> Verified
+                                        </span>
+                                    </a> <a> <i class="mdi mdi-check-circle fs-16 font"></i>Aadhar,
+                                    </a> <a> <i class="mdi mdi-check-circle fs-16 font"></i>PAN</a>&nbsp; <i
+                                        class="mdi mdi-phone-in-talk fs-16 font"></i> <a>{{ customer.mobile }}</a>
+                                </li>
+                                <li> <a class="cust_a">{{ customer.address }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span *ngIf="customer.ActiveLoans.id.length == 0" class="badge bg-warning">No
+                    previous loan history</span>
+                <span *ngIf="customer.ActiveLoans.id.length"
+                    class="badge bg-warning">{{customer.ActiveLoans.id.length}}</span>
+                <br>
+                <span *ngIf="customer.ActiveLoans.id.length">Loan No: </span>
+                <span *ngIf=" customer.ActiveLoans.id.length">
+                    <span *ngFor="let loanId of customer.ActiveLoans.id.slice(0, 2); let last = last ">
+                        {{ loanId }}{{ !last ? ',' : '' }}
+                    </span>
+                </span>
+                <div>
+                    <span *ngIf="customer.ActiveLoans.id.length > 2">
+                        <a class="text-info cursor-pointer" (mouseenter)="showListDiv(i)"
+                            (mouseleave)="hideListDiv()">More >>
+                            <div id="listDiv" class="list-container" *ngIf="hoveredRowIndex === i">
+                                <ul *ngIf="customer.ActiveLoans.id.length > 2">
+                                    <h3><b>Outstanding Loan numbers</b></h3>
+                                    <li *ngFor="let loanId of customer.ActiveLoans.id.slice(2)">
+                                        {{ loanId }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    </span>
+                </div>
+            </td>
+            <td class="text-center d-flex justify-content-center align-items-center">
+                <button class="btn sl mat-flat-button mt-20" color="primary" mat-button [matMenuTriggerFor]="menu">
+                    <span>Select Transaction</span>
+                    <span class="mdi mdi-chevron-down transaction-icon-style"></span>
+                </button>
+                <mat-menu #menu="matMenu">
+
+                    <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                            class="badge bg-secondary badgeSpace">Closure</span></li>
+                    <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                            class="badge bg-info badgeSpace">Top Up</span>
+                    </li>
+                    <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                            class="badge bg-warning badgeSpace">Renewal</span></li>
+                    <li mat-menu-item (click)="dialogRef.close()" [routerLink]="['/loan/loans']"
+                        (click)="saveCustomerDetails({customerName: customer.name ,customerId:customer.crm_code,image:customer.profile,customerAddress:customer.address,contact:customer.mobile,riskType:customer.riskType,ActiveLoans:customer.ActiveLoans})">
+                        <span class=" badge bg-success badgeSpace">New Loan</span>
+                    </li>
+                    <li mat-menu-item [hidden]="customer.ActiveLoans.id.length == 0"><span
+                            class="badge bg-danger badgeSpace">Re Pay</span>
+                    </li>
+                </mat-menu>
+            </td>
+            <td>
+                <ul class="ps-3">
+                    <li>PEP Status is Good</li>
+                </ul>
+            </td>
+            <td>
+                <button mat-icon-button [matMenuTriggerFor]="menu1" class="btn-soft-secondary"
+                    aria-label="Example icon-button with a menu">
+                    <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu1="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+
+                    <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+            </td>
+        </tr>
+    </tbody>
+</table>

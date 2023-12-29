@@ -1,0 +1,406 @@
+<div class="tab-pane active show p_20">
+    <div class="d-flex bdr ">
+        <form [formGroup]="goldLoanForm" class="sh">
+            <h2 class="card-title">Gold / Item Details
+                <div class="dropdown ms-auto bd-highlight me-1 icons">
+                    <button class="_btn btn-primary btn-icon waves-effect waves-light btn-sm" type="button"
+                        (click)="refresh()" data-bs-toggle="" aria-expanded="false" matTooltip="Refresh">
+                        <i class="mdi mdi-restore align-middle fs-18"></i>
+                    </button>
+                    <!-- <button class="_btn btn-primary btn-icon waves-effect waves-light btn-sm" type="button"
+                        data-bs-toggle="" aria-expanded="false" matTooltip="Settings">
+                        <i class="mdi mdi-cog-outline align-middle fs-18"></i>
+                    </button>
+                    <button class="_btn btn-primary btn-icon waves-effect waves-light btn-sm" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" matTooltip="Search">
+                        <i class="mdi mdi-magnify align-middle fs-18"></i>
+                    </button> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-end grd-serch">
+                        <li><a class="dropdown-item">
+                                <input type="text" class="form-control form-control-sm" placeholder="Search"
+                                    aria-controls="">
+                            </a>
+                        </li>
+                    </ul> -->
+                    <!-- <button class="_btn btn-primary btn-icon waves-effect waves-light btn-sm" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" matTooltip="Filter">
+                        <i class="mdi mdi-tune align-middle fs-18"></i>
+                    </button> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item">
+                                <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                Select All</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item remove-item-btn">
+                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                Delete
+                            </a>
+                        </li>
+                    </ul> -->
+                </div>
+            </h2>
+            <div class="flex-grow-1 m-3 pt-3">
+                <!-- Grid start -->
+                <div class="col-lg-12">
+                    <div id="fixed-header_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="col-lg-12 mb-3">
+                            <div class="row g-4">
+                                <div class="col-lg-12 mb-3">
+                                    <div class="row g-4">
+                                        <div class="col-lg-3 form-floating">
+                                            <select aria-controls="" class="form-select" id="nature"
+                                                placeholder="Nature of Items" formControlName="nature" name="nature"
+                                                (change)="onNatureChange($event)">
+                                                <option selected disabled>Select Nature of Item</option>
+                                                <option *ngFor="let options of goldNature"
+                                                    [value]="options.nature_name">
+                                                    {{options.nature_name | titlecase}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="(goldLoanForm.controls['nature'].errors ) && (goldLoanForm.controls['nature'].touched )"
+                                                class="text-danger">
+                                                Nature of item is required
+                                            </div>
+                                            <label class="nature" for="nature">Nature of Item <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-3 form-floating">
+                                            <input type="text" class="form-control " placeholder="Gold Items"
+                                                aria-controls="" formControlName="item" id="item" name="item"
+                                                appAlphabet maxlength="20">
+                                            <div *ngIf="(goldLoanForm.controls['item'].errors ) && (goldLoanForm.controls['item'].touched )"
+                                                class="text-danger">
+                                                Gold items is required
+                                            </div>
+                                            <label class="gold" for="item">Gold Items <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-2 form-floating">
+                                            <input type="text" class="form-control" placeholder="No." id="no"
+                                                formControlName="no" id="no" name="no" aria-controls="" appNumericOnly
+                                                maxlength="10">
+                                            <div *ngIf="(goldLoanForm.controls['no'].errors ) && (goldLoanForm.controls['no'].touched )"
+                                                class="text-danger">
+                                                No. is required
+                                            </div>
+                                            <label class="number" for="no">No. <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-2 form-floating">
+                                            <input type="text" class="form-control" placeholder="Gross Wt."
+                                                aria-controls="" formControlName="grossWeight" id="grossWeight"
+                                                name="grossWeight" appAppDecimalsOnly maxlength="9"
+                                                (change)="onWeightChange()" (keydown.space)="$event.preventDefault()"
+                                                appDecimalsonly>
+                                            <div *ngIf="(goldLoanForm.controls['grossWeight'].errors ) && (goldLoanForm.controls['grossWeight'].touched )"
+                                                class="text-danger">
+                                                Gross weight is required
+                                            </div>
+                                            <label for="grossWeight" class="grosswt">Gross Weight <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-2 form-floating">
+                                            <input type="text" class="form-control" placeholder="Net .Wt"
+                                                aria-controls="" formControlName="netWeight" id="netWeight"
+                                                name="netWeight" appAppDecimalsOnly maxlength="9"
+                                                (keydown.space)="$event.preventDefault()" (change)="onWeightChange()"
+                                                appDecimalsonly>
+                                            <div *ngIf="(goldLoanForm.controls['netWeight'].errors ) && (goldLoanForm.controls['netWeight'].touched )"
+                                                class="text-danger">
+                                                Net weight is required
+                                            </div>
+                                            <label for="netWeight" class="netwt">Net Weight <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-2 form-floating">
+                                            <input type="text" class="form-control" placeholder="Rate" aria-controls=""
+                                                formControlName="rate" id="rate" name="rate" maxlength="11"
+                                                (keydown.space)="$event.preventDefault()" appAppDecimalsOnly readonly>
+                                            <label for="rate" class="rate">Rate <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-3 form-floating">
+                                            <input type="text" class="form-control" placeholder="Enhz Rate"
+                                                aria-controls="" formControlName="enhRate" id="enhRate" name="enhRate"
+                                                maxlength="11" (keydown.space)="$event.preventDefault()"
+                                                appAppDecimalsOnly readonly>
+                                            <label for="enhRate" class="erate">Enhz.Rate <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-3 form-floating">
+                                            <input type="text" class="form-control" placeholder="Elgble Amt"
+                                                aria-controls="" formControlName="eligibleAmt" id="eligibleAmt"
+                                                name="eligibleAmt" maxlength="11"
+                                                (keydown.space)="$event.preventDefault()" readonly appAppDecimalsOnly>
+                                            <label for="eligibleAmt" class="elgamt">Eligible Amount <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-lg-4 col-12 d-flex form-floating green">
+                                            <input type="text" class="form-control me-2" placeholder="Remarks"
+                                                formControlName="remarks" id="remarks" name="remarks" aria-controls=""
+                                                maxlength="100" appAlphnumspl>
+
+                                            <label for="remarks" class="remarks">Remarks</label>
+                                            <!-- <button *ngIf="!showEditImage" matTooltip="Add"
+                                                [disabled]="!goldLoanForm.valid" color="primary"
+                                                (click)="onSave()"> -->
+
+                                            <div class="col-lg-1">
+                                                <div class="imgePreivew" >
+                                                    <div class="imageWraper" (click)="upload.click()"
+                                                        (keyup.enter)="upload.click()" tabindex="0">
+                                                        <img [src]="imgUrl" *ngIf="showImage"
+                                                            accept="image/jpeg, image/png,">
+                                                        <img src="/assets/images/img.jpeg" *ngIf="!showImage">
+                                                    </div>
+                                                    <div class="div">
+                                                        <div class="bottomDiv" *ngIf="showImage">
+                                                            <a (click)="openImageView(imgUrl) " matTooltip="Preview">
+                                                                <mat-icon>remove_red_eye</mat-icon>
+                                                            </a>
+                                                            <a (click)="deleteImg()" matTooltip="Delete">
+                                                                <mat-icon>delete</mat-icon>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input #upload style="display: none;" type='file'
+                                                    (change)="onSelectFile($event)">
+                                            </div>
+
+
+                                            <i *ngIf="!showEditImage" (keyup.enter)="onSave()" (click)="onSave()"
+                                                type="button" matTooltip="Add"
+                                                class="mdi mdi-plus fs-22 photo-upld-scs text-success" tabindex="0"></i>
+                                            <!-- </button> -->
+                                            <!-- <button *ngIf="showEditImage" matTooltip="Update"
+                                                [disabled]="!goldLoanForm.valid" mat-mini-fab color="primary"
+                                                (click)="onSave()">
+                                                <mat-icon>create</mat-icon>
+                                            </button> -->
+                                            <span *ngIf="showEditImage" (click)="onSave()" matTooltip="Update"
+                                                type="button"
+                                                class="mdi mdi-update fs-22 photo-upld-scs text-success"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-lg-30 p-md-15 position-relative mb-30 tab-container">
+                    <div class="example-container">
+                        <div class="scroll">
+                            <table mat-table [dataSource]="goldDetails" class="custom-table " matSort
+                                (matSortChange)="sortChange($event)">
+                                <ng-container matColumnDef="gold_checkBox">
+                                    <ng-container *matHeaderCellDef>
+                                        <th *ngIf="goldDetails?.data?.length" class="custom-header">
+                                            <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                                class="custom-checkbox"
+                                                [checked]="selection.hasValue() && isAllSelected()"
+                                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                                [aria-label]="checkboxLabel()">
+                                            </mat-checkbox>
+                                        </th>
+                                    </ng-container>
+                                    <td mat-cell *matCellDef="let row">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row) ">
+                                        </mat-checkbox>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="sl_no">
+                                    <th mat-header-cell *matHeaderCellDef> Sl. No. </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <p class="span mb-1 d-flex align-items-center cursor-pointer">
+                                            <span class="me-5 font-semibold customerCode">
+                                                {{row?.gold_id}}
+                                            </span>
+                                        </p>
+                                    </td>
+                                </ng-container>
+
+
+
+                                <ng-container matColumnDef="gold_nature">
+                                    <th mat-header-cell *matHeaderCellDef> Nature </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <p class="span mb-1 d-flex align-items-center cursor-pointer">
+                                            <span class="me-5 font-semibold customerCode">
+                                                {{row?.gold_nature}}
+                                            </span>
+                                        </p>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gold_item">
+
+                                    <th mat-header-cell *matHeaderCellDef>Items </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_item}}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="gold_no">
+                                    <th mat-header-cell *matHeaderCellDef>No. </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_no}}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="gold_grosswt">
+                                    <th mat-header-cell *matHeaderCellDef>Gross .Wt</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_grosswt}}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gold_netwt">
+                                    <th mat-header-cell *matHeaderCellDef>Net .Wt</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_netwt}}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="gold_rate">
+                                    <th mat-header-cell *matHeaderCellDef>Rate </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_rate}}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="gold_enhrate">
+                                    <th mat-header-cell *matHeaderCellDef> Enhz. Rate </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_enhrate}}</span>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="gold_eligamt">
+                                    <th mat-header-cell *matHeaderCellDef>Eligible .Amt </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_eligamt}}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gold_image">
+                                    <th mat-header-cell *matHeaderCellDef>Gold Image</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div>
+                                            <span *ngIf="row?.gold_image == ''"
+                                                class="me-5 font-semibold"><mat-icon>broken_image</mat-icon>
+
+                                            </span>
+                                            <img *ngIf="row?.gold_image != ''" class="previewimage"
+                                                [src]="row?.gold_image">
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gold_remarks">
+                                    <th mat-header-cell *matHeaderCellDef>Remarks </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span class="me-5 font-semibold">{{row?.gold_remarks}}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="gold_id">
+                                    <th mat-header-cell *matHeaderCellDef>More Actions </th>
+                                    <td mat-cell *matCellDef="let row let i=index">
+
+                                        <button mat-icon-button [matMenuTriggerFor]="menu"
+                                            aria-label="Example icon-button with a menu">
+                                            <mat-icon>more_horiz</mat-icon>
+                                        </button>
+                                        <mat-menu #menu="matMenu">
+                                            <button mat-menu-item (click)="onEdit(row, i)">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>Edit</span>
+                                            </button>
+
+                                            <button mat-menu-item (click)="onDelete(i)">
+                                                <mat-icon>delete</mat-icon>
+                                                <span>Delete</span>
+                                            </button>
+                                        </mat-menu>
+                                    </td>
+                                </ng-container>
+
+
+                                <tr mat-header-row *matHeaderRowDef="activeColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: activeColumns;"></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <div class="no-data">
+                                        <img src="assets/images/no-data-icon-1.png"
+                                            alt="">
+                                        No data available
+                                    </div>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="NoDAta" *ngIf="!
+                        goldDetails">
+                        </div>
+
+                        <div class="row sticky_b">
+                            <div class="col-md-4 col-xs-4 col-sm-4 column-padding">
+                                <div>Total Gross Weight:</div>
+                                <div><b>{{totalGoldGrossWt | number:'1.2-2'}} gms</b> </div>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4 col-sm-4 column-padding">
+                                <div>Total Net Weight:</div>
+                                <div><b> {{totalNetGrossWt | number:'1.2-2'}} gms</b> </div>
+                            </div>
+                            <div class="col-md-4 col-xs-4 col-sm-4 form-floating column-padding">
+                                <mat-icon class="clr" (click)="clrReqAmount()" *ngIf="approvedAmount>0">clear</mat-icon>
+                                <input type="text" class="form-control inp-ht" appNumericOnly id="requestedAmount"
+                                    placeholder="Requested Amount" [formControl]="requestedAmount" maxlength="11"
+                                    (keyup.enter)="onRequestedAmount($event)" (change)="onRequestedAmount($event)">
+                                <div class="text-danger error"
+                                    *ngIf="requestedAmount.errors && requestedAmount.touched ">
+                                    Requested Amt is required
+                                </div>
+                                <label class="reqst" for="requestedAmount">Requested Amt <span
+                                        class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="row sticky_b">
+                            <div class="col-md-4 col-xs-6 col-sm-3 column-padding">
+                                <div class="approved_">
+                                    <div>Approved Amount</div>
+                                    <div> <b>₹{{approvedAmount | number:'1.2-2'}}</b></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-6 col-sm-3 column-padding">
+                                <div>Total Eligible Amount</div>
+                                <div><b>₹{{totalEligibleAmt | number:'1.2-2'}}</b></div>
+                            </div>
+                            <div class="col-md-2 col-xs-6 col-sm-3 column-padding">
+                                <div>
+                                    Charges<br>
+                                    <b>₹{{charges | number:'1.2-2'}}</b>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-6 col-sm-3 column-padding">
+                                <div *ngIf="!netAmount">Net Amount<br><b>₹0.00</b>
+                                </div>
+                                <div *ngIf="netAmount">Net Amount<br><b>₹{{netAmount | number: '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating me-15 pageIndex" *ngIf="goldDetails1.length && totalActiveRows > 10">
+                            <input type="number" class="form-control" id="getPage" placeholder="Page No"
+                                [formControl]="pageNo">
+                            <label for="getPage" class="bg-alt" maxlength="8">Page No</label>
+                        </div>
+                        <!-- <mat-paginator *ngIf="goldDetails1.length" class="custom-paginator" [hidePageSize]="true"
+                            [pageSize]="10" [length]="goldDetails1.length" (page)="pageChanged($event)"
+                            [pageIndex]="currentPage" showFirstLastButtons>
+                        </mat-paginator> -->
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

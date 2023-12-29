@@ -1,0 +1,286 @@
+<div class="row">
+    <div class="col-12">
+        <div class="tab-pane" id="other-info" role="tabpanel">
+            <div class="p_20">
+                <div class="flex-grow-1">
+                    <form [formGroup]="otherInfoForm">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <h5 class=" pt-3 subHead">Other Details</h5>
+                                <div class="row g-4">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="canvassedBy" name="canvassedBy"
+                                                formControlName="canvassedBy" aria-label="Canvased By">
+                                                <option selected value="">Select</option>
+                                                <option *ngFor="let can of canvassedBy" [value]="can.id">
+                                                    {{can.canvass | titlecase}}</option>
+                                            </select>
+                                            <div *ngIf="(otherInfoForm.controls['canvassedBy'].errors&&otherInfoForm.controls['canvassedBy'].touched )"
+                                                class="text-danger error">Canvassed by whom
+                                                is
+                                                required</div>
+                                            <label for="canvassedBy">Canvassed by <span class="text-danger">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 topHeight">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="businessPromoter" name="businessPromoter"
+                                                formControlName="businessPromoter" aria-label="Business Promotor">
+                                                <option selected value="">Select</option>
+                                                <option value="1">Employee</option>
+                                                <option value="2">Others</option>
+                                            </select>
+                                            <div *ngIf="(otherInfoForm.controls['businessPromoter'].errors&&otherInfoForm.controls['businessPromoter'].touched )"
+                                                class="text-danger error">Business promoter
+                                                is
+                                                required</div>
+                                            <label for="businessPromoter">Business Promotor <span
+                                                    class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class=" pt-3 subHead"> Packet Information</h5>
+                                <div class="row g-4">
+                                    <div class="col-lg-6">
+
+                                        <div class="form-floating">
+                                            <select class="form-select" aria-label="Packet" id="packet" name="packet"
+                                                formControlName="packet" (change)="onSerialDropChange()"
+                                                [ngClass]="{ 'is-invalid': (otherInfoForm.controls['packet'].touched && otherInfoForm.controls['packet'].errors)}">
+                                                <option selected value="">Select</option>
+                                                <option *ngFor="let packet of packetData" [value]="packet.id">
+                                                    {{packet.packetData | titlecase}}</option>
+                                            </select>
+                                            <label for="packet">Packet <span class="text-danger">*</span></label>
+                                            <div *ngIf="otherInfoForm.controls['packet'].touched && otherInfoForm.controls['packet'].errors"
+                                                class="text-danger error">Packet
+                                                is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 topHeight">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" placeholder="Serial No"
+                                                id="serialNo" name="serialNo" formControlName="serialNo" appNumericOnly
+                                                maxlength="15"
+                                                [ngClass]="{ 'is-invalid': otherInfoForm.controls['serialNo'].touched && otherInfoForm.controls['serialNo'].errors}">
+                                            <label for="serialNo">Serial number</label>
+                                        </div>
+                                        <div *ngIf=" otherInfoForm.controls['serialNo'].touched && otherInfoForm.controls['serialNo'].errors"
+                                            class="text-danger error">Serial no
+                                            is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h5 class=" pt-3 subHead">Ownership Declaration</h5>
+                        <div class="row g-4 height">
+                            <div class="col-lg-3">
+                                <div class="form-floating">
+                                    <select class="form-select" id="ownerShipOfGold" name="ownerShipOfGold"
+                                        formControlName="ownerShipOfGold" aria-label="Ownership of Gold"
+                                        (change)="onChangeOfOwner()"
+                                        [ngClass]="{ 'is-invalid': (otherInfoForm.controls['ownerShipOfGold'].errors&&otherInfoForm.controls['ownerShipOfGold'].touched )}">
+                                        <option selected value="">Select</option>
+                                        <option *ngFor="let owner of ownerShipOfGold " [value]="owner.id">
+                                            {{owner.ownership | titlecase}}</option>
+                                    </select>
+                                    <div class="error"
+                                        *ngIf="(otherInfoForm.controls['ownerShipOfGold'].errors&&otherInfoForm.controls['ownerShipOfGold'].touched )"
+                                        class="text-danger error">Ownership
+                                        of gold is
+                                        required</div>
+                                    <label for="ownerShipOfGold">Ownership of gold <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 topHeight">
+                                <div class="form-floating">
+                                    <select class="form-select" aria-label="Relation with Owner" id="relationShipWith"
+                                        name="relationShipWith" formControlName="relationShipWith"
+                                        [ngClass]="{ 'is-invalid':otherInfoForm.controls['relationShipWith'].touched && otherInfoForm.controls['relationShipWith'].errors}">
+                                        <option selected value="">Select</option>
+                                        <option *ngFor="let relation of ownerRelation" [value]="relation.id">
+                                            {{relation.relationship | titlecase}}</option>
+                                    </select>
+                                    <div *ngIf="otherInfoForm.controls['relationShipWith'].touched && otherInfoForm.controls['relationShipWith'].errors"
+                                        class="text-danger error">Relation
+                                        with owner is
+                                        required
+                                    </div>
+                                    <label for="floatingSelect">Relation with owner <span
+                                            class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 topHeight">
+                                <div class="form-floating">
+                                    <select class="form-select" aria-label="Possessed By" id="possessedBy"
+                                        name="possessedBy" formControlName="possessedBy"
+                                        (change)="onChangePossessedBy()"
+                                        [ngClass]="{ 'is-invalid': ( otherInfoForm.controls['possessedBy'].errors&&otherInfoForm.controls['possessedBy'].touched)}">
+                                        <option selected value="">Select</option>
+                                        <option *ngFor="let Possessed of possessedBy" [value]="Possessed.id">
+                                            {{Possessed.possessedBy | titlecase}}</option>
+                                    </select>
+                                    <div *ngIf="(otherInfoForm.controls['possessedBy'].errors&&otherInfoForm.controls['possessedBy'].touched)"
+                                        class="text-danger error">Possessed by
+                                        is required</div>
+                                    <label for="possessedBy">Possessed by <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 topHeight">
+                                <div class="form-floating">
+                                    <input class="form-control flatpickr-input inp-ht" type="text" mwlFlatpickr
+                                    onkeydown="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"
+                                    onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"
+                                        [dateFormat]="'d/m/Y'" [altInput]="false" [allowInput]="true" [convertModelValue]="true"
+                                        placeholder="Select date of purchase" [maxDate]="maxDate" formControlName="date" autocomplete="off"
+                                        id="date" name="date" (input)="validateDate(this.otherInfoForm.value)"
+                                        [ngClass]="{
+                                            'is-invalid': otherInfoForm.controls['date'].touched && otherInfoForm.controls['date'].errors,
+                                            'disabled-input': otherInfoForm.controls['date'].disabled
+                                        }">
+                                    <label for="date" [ngClass]="{'content': isScreenAbove1024}  ">Approx. purchase date
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div *ngIf="otherInfoForm.controls['date'].touched && otherInfoForm.controls['date'].errors"
+                                        class="text-danger error"> Approx date of
+                                        purchase is
+                                        required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-floating">
+                                    <input (change)="onWeightChange()" type="text" class="form-control" placeholder="Net Weight" id="netWeight"
+                                        name="netWeight" formControlName="netWeight" maxlength="9"
+                                        [ngClass]="{ 'is-invalid': otherInfoForm.controls['netWeight'].touched &&  otherInfoForm.controls['netWeight'].errors}"
+                                        appAppDecimalsOnly>
+                                    <label for="Weight">Net.wt <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+                                <div *ngIf="otherInfoForm.controls['netWeight'].touched && otherInfoForm.controls['netWeight'].errors"
+                                    class="text-danger error"> Net weight is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" mt-4">
+                            <div class="row g-4">
+                                <div class="col-lg-6">
+                                    <div class="Sbdr height">
+                                        <h5 class=" pt-3">Biometric Verification</h5>
+                                        <div class="d-flex bd-highlight brdr-radius">
+                                            <div class="p-2 bd-highlight">
+                                                <div class="col-lg-3 avatar-sm" *ngIf="!biometric">
+                                                    <span
+                                                        class="avatar-title bg-soft-warning text-warning rounded-2 fs-2">
+                                                        <i class="bx bxs-info-circle"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="rounded card-custom me-15 p-12" *ngIf="biometric">
+                                                    <img [src]="'assets/images/Icons/tick.svg'" alt="biometric">
+                                                </div>
+                                            </div>
+                                            <div class="p-2 bd-highlight" *ngIf="!biometric">
+                                                <h6>Customer Boimetric Verification</h6>
+                                                <span class="fc"> Important to ensure that the verification is
+                                                    accurate.</span>
+                                            </div>
+                                            <div class="p-2 bd-highlight" *ngIf="biometric">
+                                                <h6>Customer Biometric Verified</h6>
+                                                <span class="fc">
+                                                    The customer Biometric verification
+                                                    is accurate
+                                                </span>
+                                            </div>
+                                            <div class="ms-auto p-2 bd-highlight">
+                                                <button type="button" class="btn btn-outline-warning"
+                                                    data-bs-toggle="button" *ngIf="!biometric && !biometricLoader"
+                                                    (click)="onBiometric('start')">
+                                                    <span class="icon-on"><i class="ri-add-line align-bottom me-1"></i>
+                                                        Start</span>
+                                                </button>
+
+                                                <button type="button" class="btn btn-load" *ngIf="biometricLoader">
+                                                    <span class="spinner-border " role="status">
+                                                    </span>
+                                                    <span class="icon-on"><i class="align-bottom me-1"></i>
+                                                        Verifying</span>
+                                                </button>
+
+                                                <button type="button" class="btn btn-outline-warning"
+                                                    data-bs-toggle="button" *ngIf="biometric"
+                                                    (click)="onBiometric('edit')">
+                                                    <span class="icon-on"><i class="ri-add-line align-bottom me-1"></i>
+                                                        Edit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <h5 class=" pt-3"> Customer E Sign</h5>
+                                    <div class="d-flex bd-highlight mb-3 brdr-radius">
+                                        <div class="p-2 bd-highlight">
+                                            <div class="col-lg-3 avatar-sm" *ngIf="!eSign">
+                                                <span class="avatar-title bg-soft-warning text-warning rounded-2 fs-2">
+                                                    <i class="bx bxs-info-circle"></i>
+                                                </span>
+                                            </div>
+                                            <div class="rounded card-custom me-15 p-12" *ngIf="eSign">
+                                                <img [src]="'assets/images/Icons/tick.svg'" alt="eSign">
+                                            </div>
+                                        </div>
+                                        <div class="p-2 bd-highlight" *ngIf="!eSign">
+                                            <h6>Customer E-Sign Verification</h6>
+                                            <span class="fc">
+                                                Important to ensure that the verification is accurate.
+                                            </span>
+                                        </div>
+                                        <div class="p-2 bd-highlight" *ngIf="eSign">
+                                            <h6>Customer E-Sign Verified</h6>
+                                            <span class="fc">
+                                                The customer E-Sign verification
+                                                is accurate
+                                            </span>
+                                        </div>
+                                        <div class="ms-auto p-2 bd-highlight">
+                                            <button type="button" class="btn btn-outline-warning"
+                                                data-bs-toggle="button" *ngIf="!eSign && !eSignLoader"
+                                                (click)="onEsign('start')">
+                                                <span class="icon-on"><i class="ri-add-line align-bottom me-1"></i>
+                                                    Start</span>
+                                            </button>
+
+                                            <button type="button" class="btn btn-load" *ngIf="eSignLoader">
+                                                <span class="spinner-border" role="status">
+                                                </span>
+                                                <span class="icon-on"><i class="align-bottom me-1"></i>
+                                                    Verifying</span>
+                                            </button>
+
+                                            <button type="button" class="btn btn-outline-warning"
+                                                data-bs-toggle="button" *ngIf="eSign" (click)="onEsign('edit')">
+                                                <span class="icon-on"><i class="ri-add-line align-bottom me-1"></i>
+                                                    Edit</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

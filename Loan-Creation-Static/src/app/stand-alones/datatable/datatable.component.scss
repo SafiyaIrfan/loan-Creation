@@ -1,0 +1,469 @@
+.clss {
+    background-color: #fff;
+    width: 100% !important;
+}
+
+.table {
+    border-radius: 6px;
+}
+
+.table th {
+    color: #fff;
+    background: #4747a1;
+}
+
+.table thead {
+    background-color: #dbe8f3;
+}
+
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #a8a8d594 !important;
+}
+
+.ul {
+    list-style-type: none;
+    padding: 0;
+    line-height: 30px;
+    
+}
+
+.ribbon-two-danger {
+    background: #f06548;;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    padding: 0px 5px;
+    margin: 5px 0;
+    min-width: 60px;
+}
+
+.ribbon-two-success {
+    background: rgb(12, 187, 6);
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    padding: 0px 5px;
+    margin: 5px 0;
+    min-width: 60px;
+}
+
+.ribbon-two-warning {
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    padding: 0px;
+    margin: 5px 0;
+    min-width: 60px;
+    background: #ffbe0b;
+}
+
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: none;
+    color: #fff !important;
+    background: #4747a1 !important;
+}
+
+
+
+.dataTables_wrapper .dataTables_paginate{
+    margin-top: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+    border: 1px solid #e2dada;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+// ::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button {
+//     border-radius: 50% !important;
+// }
+
+/* // ::ng-deep table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
+//   content: url('../../../images/temp_img/add.png') !important;
+//   height: 2px !important;
+//   width: 2px !important;
+// }
+// ::ng-deep  table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before {
+//   content: url('../../../images/temp_img/delete.png') !important;
+//   height: 2px !important;
+//   width: 2px !important;
+// } */
+
+::ng-deep table.dataTable thead>tr>th.sorting:before,
+table.dataTable thead>tr>th.sorting:after {
+    color: #fff;
+    /* // opacity: 1 !important;  */
+}
+
+::ng-deep .dataTables_wrapper .dataTables_filter input,
+::ng-deep .dataTables_length select {
+    border: 1px solid #aaa !important;
+    border-radius: 6px !important;
+    background-color: #fff !important;
+
+    &.focus-visible {
+        outline: none;
+    }
+    
+}
+
+::ng-deep .dataTables_length{
+    display: none !important;
+}
+
+.card-header:first-child {
+    border-radius: var(--vz-card-inner-border-radius) var(--vz-card-inner-border-radius) 0 0;
+    background-color: #4747a1;
+    padding: 20.5px !important;
+}
+
+.card-title {
+    font-size: 16px;
+    margin: 0 0 2px 0;
+    color: white;
+}
+
+.btn-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.card-body {
+    border-radius: 5px;
+    box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.image-respnsv {
+    width: 10%;
+    height: auto;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+// table td {
+//     border: 1px solid #ddd;
+
+//     & span {
+//         font-weight: 400;
+//     }
+// }
+
+.show {
+    background-color: #fff;
+    z-index: 9999;
+
+}
+
+.fixed-header_wrapper .col-lg-2 {
+    z-index: 1;
+}
+
+h5 {
+    color: #ffff !important;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+.badge-soft-info {
+    color: #299cdb;
+    background-color: rgba(41, 156, 219, .1);
+}
+
+.cust {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.cust_a {
+    text-transform: capitalize;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+    border: 1px solid #ced4da !important;
+    height: 5px;
+}
+
+.fs-16 {
+    color: #ffff;
+}
+
+.letter-icon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.card {
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+.badgeSpace {
+    margin-right: 3px;
+    cursor: pointer;
+    min-width: 163px;
+    height: 24px;
+    font-weight: 100;
+}
+
+
+.card-body {
+    flex: none !important;
+}
+
+.rounded-circle {
+    padding: 0;
+}
+
+.font {
+    color: #0ab39c;
+}
+
+.bg {
+    background-color: #0ab39c;
+    border-color: #0ab39c;
+}
+
+.photo-upld-prmry {
+    border-radius: 0.25rem;
+    border: 1px solid #4747a1;
+    padding: 5px;
+    cursor: pointer;
+    height: 40px;
+}
+
+.form-check-input {
+    // width: 20px;
+    // height: 20px !important;
+    // margin-top: 0px;
+    // margin-right: 10px;
+    width: 15px;
+    height: 14px !important;
+    margin-top: 3px;
+    margin-right: 10px;
+
+}
+
+.photo-upld-scs {
+    // border-radius: 0.25rem;
+    // border: 1px solid #0ab39c;
+    // padding: 5px;
+    // cursor: pointer;
+    // height: 40px;
+    border-radius: 0.25rem;
+    border: 1px solid #aba6a6dd;
+    padding: 5px;
+    cursor: pointer;
+    height: 40px;
+    color: #aba6a6dd !important;
+}
+
+.modalfooter {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 5;
+    width: 100%;
+
+}
+
+.sl {
+    border: 1px solid #4747a1;
+    cursor: pointer;
+    min-width: 195px;
+}
+
+.btnstyle {
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+    padding-top: 5px;
+}
+
+.m_b {
+    margin-bottom: 70px;
+}
+
+.table> :not(caption)>*>* {
+    padding: 10px !important;
+}
+
+// .pagination {
+//     border-radius: 5px !important;
+
+// }
+
+// .page-link{
+//     border: 1px solid #e9ebec !important;
+// }
+
+
+.pagination {
+    border-radius: 0px;
+    border: 0.1px solid #e9ebec;
+    cursor: pointer;
+}
+
+.page-item .page-link {
+    border-radius: 0px;
+    border: 0.1px solid #e9ebec;
+    padding-top: 4px !important;
+
+}
+
+.page-number {
+    padding-bottom: 10px !important;
+}
+
+.page-item .page-link .previous-page {
+    padding-top: 6px !important;
+
+}
+
+.fonti {
+    font-size: 13px !important;
+}
+
+.badgeSpace {
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+
+.tooltip-content {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.list-container {
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    /* Set your desired background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Add box shadow for a popup effect */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-repeat: none;
+    display: inline-block;
+
+}
+
+.list-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.list-container h3 {
+    margin-bottom: 10px;
+}
+
+.list-container li {
+    margin-bottom: 5px;
+}
+
+.list-container:hover {
+    display: inline-block;
+}
+
+.transaction-label-style,
+.ransaction-icon-style {
+    display: inline-block;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+    width: 195px !important;
+}
+
+.mat-mdc-menu-item {
+    min-height: 30px !important;
+}
+
+.transaction-label-size {
+    font-size: 12px;
+}
+
+.card-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.mdc-button {
+    font-size: 15px;
+    letter-spacing: 0px;
+}
+
+.ribbon-box {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+table.dataTable > thead > tr > th{
+    font-weight: 900 !important;
+}
+
+table.dataTable tbody tr.selected > * ,table.dataTable.hover > tbody > tr:hover > *, table.dataTable.display > tbody > tr:hover > *,.table > :not(caption) > * > *{
+    box-shadow: none !important;
+    color: #362f29 !important;
+    background-color: none !important;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before, table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+    margin-right: 0.5em;
+    display: inline-block;
+    color: rgb(255 255 255) !important;
+    content: "►";
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* Styles specific to small screens */
+    .mobile-msg {
+        margin-top: 15px;
+    }
+
+    .scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+
+    /* Styles specific to medium screens */
+    .mobile-msg {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+
+    /* Styles specific to large screens */
+    .mobile-msg {
+        max-height: 40px;
+    }
+
+}
+
+.spinner-height {
+    margin-top: .5rem !important;
+}
+

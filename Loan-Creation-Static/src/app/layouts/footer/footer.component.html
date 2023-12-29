@@ -1,0 +1,22 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                {{year}} © Muthoot Finance. All Rights Reserved.
+            </div>
+            <div class="col-sm-4">
+                <div class="d-none d-sm-block cursor-pointer text-center">
+                    <a (click)="openTermsModal('terms')"> Terms & Conditions |</a>
+                    <a (click)="openTermsModal('privacy')"> Privacy Policy</a>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="text-sm-end d-none d-sm-block" >
+                  Version{{_globals.VERSION}}
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</footer>

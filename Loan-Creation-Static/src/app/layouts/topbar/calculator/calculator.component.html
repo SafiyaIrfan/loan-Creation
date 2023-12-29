@@ -1,0 +1,59 @@
+<h2 class="zero-letter-spacing">Check the approximate loan amount</h2>
+<br>
+<div class="row">
+    <form [formGroup]="calcAmountForm">
+        <div class="form-floating">
+            <select class="form-select" aria-label="Select Product Type" id="productType" formControlName="productType"
+                (change)="onProductChange($event)" name="productType"
+                [ngClass]="{ 'is-invalid': (calcAmountForm.controls['productType'].errors && calcAmountForm.controls['productType'].touched)}">
+                <option *ngFor="let obj of productName" [value]="obj.PROD_TYPEID">{{
+                    obj.PTYPE_SHORT_NAME }}
+                </option>
+            </select>
+            <div *ngIf="(calcAmountForm.controls['productType'].errors && calcAmountForm.controls['productType'].touched)"
+                class="text-danger">Product Type
+                is required
+            </div>
+            <label for="productType">Product Type <span class="text-danger">*</span></label>
+        </div>
+
+        <div class="form-floating">
+            <select class="form-select mt-3" aria-label="Select Product Type" id="schemeType"
+                formControlName="schemeType" name="schemeType"
+                [ngClass]="{ 'is-invalid': (calcAmountForm.controls['schemeType'].errors && calcAmountForm.controls['schemeType'].touched)}">
+
+                <option *ngFor="let scheme of schemeName" [value]="scheme.SCHEMEID">{{
+                    scheme.SCHEME_NAME }}
+            </select>
+
+            <div *ngIf="(calcAmountForm.controls['schemeType'].errors && calcAmountForm.controls['schemeType'].touched)"
+                class="text-danger">Scheme Type
+                is required
+            </div>
+            <label for="schemeName">Scheme <span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control bold-text mt-3" placeholder="Net.wt" id="netWeight"
+                autocomplete="off" name="netWeight" formControlName="netWeight" maxlength="9"
+                [ngClass]="{ 'is-invalid': calcAmountForm.controls['netWeight'].touched &&  calcAmountForm.controls['netWeight'].errors}"
+                appAppDecimalsOnly autocomplete="off">
+                <label for="netWeight">Approx net wt <span class="text-danger">*</span>
+                </label>
+
+            <div *ngIf="calcAmountForm.controls['netWeight'].touched && calcAmountForm.controls['netWeight'].errors"
+                class="text-danger"> Net weight is required
+            </div>
+        </div>
+
+
+        <div *ngIf="result" class="mt-3">
+            The Net amount based on the entered weight is: <b> ₹{{ result }}.00</b>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+            <button (click)="resetForm()" mat-stroked-button color="primary" class="zero-letter-spacing">Reset</button>
+            <button mat-raised-button color="primary" [disabled]="calcAmountForm.invalid"
+                (click)="calculateAmount()" class="zero-letter-spacing">Check amount</button>
+        </div>
+    </form>
+</div>

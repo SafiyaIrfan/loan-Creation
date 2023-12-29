@@ -1,0 +1,29 @@
+.wraper{
+    border: 15px white;
+    padding: 10px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+.wraper_{
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+mat-icon{
+cursor: pointer;
+}
+
+.scroll{
+    max-height: 400px;
+    // overflow-y: scroll;
+}
+
+

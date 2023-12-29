@@ -1,0 +1,226 @@
+customer outstanding list
+{
+    "d": {
+        "OSList": "{total: '1', page: '1', records: '40',rows : 
+        [ {cell:[ '1072','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226412','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1073','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226413','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1074','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226416','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1076','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226418','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1077','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226419','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1078','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226420','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1079','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226421','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1081','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226423','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1082','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226426','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1083','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226427','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1084','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226430','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1085','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226431','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1086','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226432','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1087','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226433','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1089','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226435','05/12/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1091','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226437','09/07/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1092','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226438','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1093','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226439','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1094','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226455','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1116','MSL','08/30/2023 12:00:00 AM','9','16500','(3999)-CFM BRANCH','226737','08/30/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1118','MSL','08/31/2023 12:00:00 AM','12','20050','(3999)-CFM BRANCH','226747','08/31/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1126','MSL','09/12/2023 12:00:00 AM','10','38500','(3999)-CFM BRANCH','226905','09/12/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1127','MSL','09/12/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226912','09/12/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1130','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226924','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1131','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226925','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1132','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226926','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1133','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226927','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1134','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226928','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1135','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226929','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1136','MSL','09/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226930','09/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1137','MSL','09/14/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226932','09/14/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1139','MSL','09/14/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226934','09/14/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1080','MSL','04/13/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226946','04/13/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1141','MSL','09/14/2023 12:00:00 AM','9','37800','(3999)-CFM BRANCH','226947','09/14/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1142','MSL','09/14/2023 12:00:00 AM','9','5000','(3999)-CFM BRANCH','226948','09/14/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1146','MSL','09/15/2023 12:00:00 AM','11','10000','(3999)-CFM BRANCH','226967','09/15/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1153','MSL','10/16/2023 12:00:00 AM','2','500','(3999)-CFM BRANCH','227038','10/16/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1154','MSL','10/16/2023 12:00:00 AM','1','4000','(3999)-CFM BRANCH','227040','10/16/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1155','MSL','10/16/2023 12:00:00 AM','4','16000','(3999)-CFM BRANCH','227041','10/16/2023 12:00:00 AM','Gold Not Verified' ] },{cell:[ '1156','MSL','10/16/2023 12:00:00 AM','1','4000','(3999)-CFM BRANCH','227042','10/16/2023 12:00:00 AM','Gold Not Verified' ] } ] }",
+        "OSTotal": "302350"
+    }
+}
+
+packet details
+
+{
+    "d": {
+        "ResultSet": [
+            {
+                "TPP_MASTER_ID": 3,
+                "PACKET_TYPE_NAME": "Large",
+                "WEIGHT_FROM": 126,
+                "WEIGHT_TO": 999999
+            },
+            {
+                "TPP_MASTER_ID": 2,
+                "PACKET_TYPE_NAME": "Medium",
+                "WEIGHT_FROM": 76,
+                "WEIGHT_TO": 125
+            },
+            {
+                "TPP_MASTER_ID": 1,
+                "PACKET_TYPE_NAME": "Small",
+                "WEIGHT_FROM": 0,
+                "WEIGHT_TO": 75
+            }
+        ]
+    }
+}
+
+http://10.50.3.125:8000/Pledge/frmLoanAdvancing.aspx/GetEnumValues
+
+{
+    "d": {
+        "1": "Finger Mismatch",
+        "2": "Error MS01000 device not found",
+        "3": "Punching device complaint",
+        "4": "System time out",
+        "5": "Third party transaction",
+        "6": "Deceased customer",
+        "7": "Others",
+        "8": "Not willing"
+    }
+}
+
+fill test
+
+{
+    "d": {
+        "ResultSet": [
+            {
+                "TESTID": 1,
+                "TEST": "ACID TEST"
+            },
+            {
+                "TESTID": 2,
+                "TEST": "WEIGHT TEST"
+            },
+            {
+                "TESTID": 3,
+                "TEST": "SOUND TEST"
+            },
+            {
+                "TESTID": 4,
+                "TEST": "OTHER TEST"
+            }
+        ]
+    }
+}
+
+http://10.50.3.125:8000/Pledge/frmLoanAdvancing.aspx/fillOutstandingLoanAmount
+
+{
+    "d": {
+        "ResultSet": [
+            {
+                "LOAN_OUTSTANDING": 253200,
+                "ACTIVE_LOANS": 148,
+                "CONDUCTID": 0,
+                "CONDUCT_NAME": "Good",
+                "REMARKS": "Good. ",
+                "PRIVILAGECARDSTATUS": 0,
+                "PHOTO_COLLECT": 1,
+                "IDPROOF_COLLECT": 0,
+                "FORMNO": 0,
+                "STATUS": 1,
+                "ISACTIVE": 1,
+                "IS_RESIDENT": 1,
+                "ACTIVE_ODG_LOANS": 0,
+                "MAX_LOAN_OUTS": 250000000,
+                "MOBILE": "9845687510",
+                "CUST_CODE": "039990000000010",
+                "IDPROOF_EXPIRY_DATE": null,
+                "ISREGFINGERPRINT": 1,
+                "MOBILE_STATUS": 1,
+                "CUSTOMER_TYPE": 26,
+                "PAN_NO": "0",
+                "RESIDENCE_TYPE": 0,
+                "CREATED_ON": "/Date(1575607036000)/",
+                "IS_AGS_REGISTERED": 0,
+                "UNIT_MANAGER": 3898,
+                "CUST_LINKED_EMPID": 2265520,
+                "CUSTOMER_MAILID": "sivaprasad@emsyne.com",
+                "DASHBOARD_MOB_STATUS": 0,
+                "ENTITY_ID": "0",
+                "CARD_ID": null,
+                "ADDRESS_CHANGE_COUNT": 0,
+                "MOBILE_CHANGE_COUNT": 0,
+                "CUSTOMER_CREATED_ON": null,
+                "OVER_DUE_COUNT": 5,
+                "NET_FLOW": 47295,
+                "CUST_UNIT_ID": 10659,
+                "ADDR_REQ_STATUS": null,
+                "CRM_CUST_CODE": null,
+                "REJECTIONCNT": null,
+                "FEEDBACK_TYPE": null,
+                "GCCENTITY_ID": "0",
+                "GCCCARD_ID": null,
+                "DCB_CARD_NO": null,
+                "GCC_CARD_NO": null,
+                "DOB": "/Date(636229800000)/",
+                "INTEREST_CUT_OUTS": 277850,
+                "OCCUPATIONID": 4,
+                "IS_LOAN_CHQUE_APPROVAL_ENABLED": 0,
+                "IS_HTTPS_PHOTO_CAPTURE_RQD": 2,
+                "STATEID": 1,
+                "NPA_LOAN_COUNT": 0,
+                "ACTIVE_BANK_ACCT_CNT": 1,
+                "IS_MOB_VERI_MANDATORY_FOR_LOAN": 1,
+                "MONEYKITCARD_ID": null,
+                "MONEYKITCARD_NO": null,
+                "MONEYKITENTITY_ID": null,
+                "WATCHLIST_COUNT": 0,
+                "LOAN_APPROVER_COMMENTS": null,
+                "IS_CUST_SIGN_CAPTURED": 0,
+                "IS_FIRST_LOAN": 0,
+                "IS_PAN_VERIFIED": 0,
+                "FORM60_APPLICATION_DATE": null,
+                "NINEMONTHPENDING": null,
+                "UNLOCKER_REQUEST_ID": 0,
+                "CUST_BLOCK_REMARKS": null,
+                "CUST_BLOCK_EMPCODE": null,
+                "CUST_BLOCK_EMPNAME": null,
+                "CUST_BLOCK_DEPT": null,
+                "TOMS_COUNT": 0,
+                "IS_WELCOM_KIT_ENABLED": 1,
+                "POLICY_NUMBER": null,
+                "IS_PROMOCODE_APPL": 1,
+                "UNIT_LOCATION": 2,
+                "IS_ENABLED_RENEWAL_CUST_PHOTO": 3,
+                "UPLOAD_PLUGIN_TYPE": 2,
+                "BLOCKED_ON": null,
+                "BIOMETRIC_REGI_STATUS": 0,
+                "IS_MAKER_CHECKER_ENABLED": 0,
+                "KYC_EXPIRED_ON": null,
+                "IS_KYC_EXPIRED": 0,
+                "CUST_BLOCK_BRANCH_CODE": null,
+                "AUDIT_IRREGULARIT_COUNT": 0,
+                "ADDRESS_TYPEID": 3,
+                "IS_ONLE_GOLD_VERIFICATION_RQD": 0,
+                "HAS_AUCTION_DEFICIT_HISTORY": 0,
+                "IS_TRX_BLOCKED_DUE_TO_KYC_EXP": 1,
+                "LOAN_AUDITED_COUNT": 40
+            }
+        ],
+        "LastTransactionDate": {
+            "ResultSet1": [
+                {
+                    "LAST_TRANSACTION_DATE": "/Date(1697394600000)/"
+                }
+            ]
+        },
+        "RSCustomerFingerPrint": {
+            "ResultSet3": []
+        }
+    }
+}
+
+
+-------------------------------------
+http://10.50.3.125:8000/Common/frmCustomerCommon.aspx/GetCustomerDetails
+{
+    "d": {
+        "ResultSet": [
+            {
+                "CUSTOMERID": 153503,
+                "NAME": "SIVAPRASAD L",
+                "ADDRESS1": "A",
+                "ADDRESS2": "A",
+                "ADDRESS3": "A",
+                "POST_OFFICE": "A",
+                "VILLAGE_TALUK": "A",
+                "COUNTRY": "INDIA",
+                "STATE": "ANDHRA PRADESH",
+                "DISTRICT": "ALAHABAD",
+                "PIN_CODE": "686200",
+                "LANDPHONE1": "|",
+                "MOBILE1": "XXXXXX7510",
+                "UNIQUEID": null,
+                "EMAIL": "sivaprasad@emsyne.com",
+                "STATUS": "ACTIVE",
+                "CUST_CLASS_NAME": "Private sector",
+                "ATTACHMENT_VALUE": "000.jpg",
+                "PAN_NO": null,
+                "CUSTCLASSIFICATION": "General Category",
+                "LOYALTY_POINTS": 0,
+                "PATH": "http://10.50.3.125:9889/ImageScanned/10659/",
+                "PHOTOFILENAME": "000.jpg",
+                "DOB": "03/01/1990 12:00:00 AM",
+                "MPOWERCARDNO": null,
+                "PRIVILEGECARDNO": null,
+                "CUST_CODE": "039990000000010",
+                "RISK_CATEGORY": "Low Risk",
+                "CUST_PHOTO_READING_PATH": "http://10.50.3.125:9889/CBSImageFiles/ImageScanned/10659/"
+            }
+        ]
+    }
+}
+
+---------------------

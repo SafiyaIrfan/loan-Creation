@@ -1,0 +1,35 @@
+.btn {
+    height: 100%;
+}
+
+.fc {
+    color: #949494;
+}
+
+.error {
+    // position: absolute;
+    white-space: nowrap;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.disabled-input {
+    background-color: #eff2f7;
+    /* Set your desired background color for disabled */
+
+}
+
+@media screen and (max-width: 991px) {
+    .topHeight {
+        padding-top: 7px !important;
+    }
+}
+
+.content {
+    width: 10em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: text-overflow 0.3s;
+}

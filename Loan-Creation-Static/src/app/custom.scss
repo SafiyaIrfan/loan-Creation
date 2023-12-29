@@ -1,0 +1,340 @@
+/*
+Template Name: Velzon - Admin & Dashboard Template
+Author: Themesbrand
+Website: https://themesbrand.com/
+Contact: support@themesbrand.com
+File: Custom Css File
+*/
+
+/*gopi styles*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*scroll bar*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dataTables_paginate {
+    margin-top: 10px;
+
+    & a {
+        border: 1px solid #ddd !important;
+        margin: 0px !important;
+    }
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #405189;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7575f5;
+}
+
+/*scroll bar*/
+:is(.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6) {
+    color: var(--vz-heading-color);
+    font-family: inherit;
+}
+
+:is([data-layout=vertical], [data-layout=semibox])[data-sidebar=dark][data-sidebar-size=sm] .navbar-brand-box {
+    background: #ff3b49;
+}
+
+/*collabsible submenu bg color */
+:is([data-layout=vertical], [data-layout=semibox])[data-sidebar=dark][data-sidebar-size=sm] .navbar-menu .navbar-nav .nav-item:hover>.menu-dropdown {
+    background: #4747a1;
+}
+
+:is([data-layout=vertical], [data-layout=semibox])[data-sidebar-size=sm] .navbar-menu .navbar-nav .nav-item:hover>a.menu-link {
+    background-color: #ff3b49;
+}
+
+/*loan creation page */
+.cust-photo {
+    position: fixed;
+    top: 70px;
+    right: 5px;
+    z-index: 1;
+}
+
+.cust-icn {
+    position: absolute;
+    top: -34px;
+    right: 8px;
+    z-index: 1;
+    background-color: var(--bg-soft-warning);
+}
+
+.clk-drp {
+    width: 350px;
+    height: auto;
+    position: fixed;
+    top: 120px;
+    right: 25px;
+    z-index: 1;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px #ccc;
+    background-color: #fff;
+}
+
+.risk-fnt {
+    font-weight: 500;
+}
+
+/*loan creation page */
+
+.form-floating>.form-control-plaintext~label,
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+    opacity: .90;
+    -webkit-transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #2c2c70;
+}
+
+.topbar-user {
+    background-color: var(--vz-header-bg);
+}
+
+.table.dataTable>thead .sorting:after {
+    right: 1rem;
+    top: 10px;
+}
+
+.table.dataTable>thead .sorting:before {
+    right: 1rem;
+    top: 16px;
+}
+
+.str-mntry {
+    color: var(--vz-danger);
+    font-weight: 900;
+}
+
+.form-select {
+    border: 1px solid #d1c9f1;
+    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+}
+
+.form-control {
+    border: 1px solid #d1c9f1;
+    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+}
+
+.nav-tabs-custom {
+    border-bottom: 1px solid #d1c9f1;
+}
+
+.brdr-radius {
+    border: 1px solid #d1c9f1;
+    border-radius: 4px;
+    padding: 1rem;
+    min-height: 112px;
+}
+
+.form-control:focus {
+    border-color: #a78eff;
+}
+
+.form-select:focus {
+    border-color: #a78eff;
+}
+
+.r-view {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
+    color:
+        /*#0ab39c*/
+        #4747a1;
+}
+
+.grid-card-bx {
+    box-shadow: 0px 0px 6px rgba(56, 65, 74, 0.15);
+}
+
+.card-header:first-child {
+    border-radius: var(--vz-card-inner-border-radius) var(--vz-card-inner-border-radius) 0 0;
+    background-color: #4747a1;
+    /*#405189;*/
+}
+
+.card-title {
+    color: white !important;
+    background-color: #4747a1;
+    padding: 18px;
+    /*  */
+}
+
+.net-amt-txt {
+    margin-top: -10px;
+}
+
+.chrg-amt-txt {
+    margin-top: -10px;
+    font-weight: 500;
+}
+
+.aprvd-amt-txt {
+    margin-top: -5px;
+    color: var(--vz-success);
+}
+
+.photo-upld-scs {
+    border-radius: 0.25rem;
+    border: 1px solid #0ab39c;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.photo-upld-prmry {
+    border-radius: 0.25rem;
+    border: 1px solid #4747a1;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-brand-box {
+    background-color: #ff3b49;
+}
+
+:is([data-layout=vertical], [data-layout=semibox])[data-sidebar=dark] .navbar-menu {
+    background: #4747a1;
+    border-right: 0px solid var(--vz-vertical-menu-bg-dark);
+}
+
+/*login*/
+.bg-primary {
+    background-color: #4747a1 !important;
+}
+
+.bg-secondary {
+    background-color: #ff3b49 !important;
+}
+
+.btn-primary {
+    background-color: #4747a1 !important;
+}
+
+// .lgn-bg{background: url('../images/login-bg.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: #4747a1;}
+// .bg-img{background: url('../images/side-bg.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: #e5f3fc;}
+
+// .lgn-bg1{background: url('../images/login-bg1.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: #4747a1;}
+// .bg-img1{background: url('../images/rht.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; background-color: #e5f3fc;}
+
+// .lgn-bg2{/*background: url('../images/login-bg1.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */background-color: #181838;}
+// .bg-img2{background: url('../images/rht-2.png'); background-position: center center; background-repeat: no-repeat; background-size: cover;}
+
+.bx-shadow {
+    box-shadow: 2px 0px 30px #a8acad;
+    /*#a3b6b7  20374b*/
+}
+
+/*login*/
+.grd-serch {
+    width: 220px;
+}
+
+
+/*floating label start*/
+.form-floating>.form-select {
+    padding-top: 1.10em;
+    padding-bottom: 0rem;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext,
+.form-floating>.form-select {
+    height: calc(2.5rem + 2px);
+    line-height: 2;
+}
+
+.form-floating>label {
+    padding: 0.6rem 0.8rem;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+    padding: 1rem 0.8rem;
+}
+
+.badge {
+    --vz-badge-font-weight: 500;
+}
+
+/*floating label end*/
+
+/*loanlisting start*/
+.bg-card-hd-clr {
+    background-color: #4747a1;
+    /*#405189;*/
+}
+
+.fab-btn {
+    position: fixed;
+    right: 5px;
+    top: 270px;
+    z-index: 1;
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+}
+
+/*loanlisting end*/
+
+
+@media only screen and (max-width: 992px) {
+    .lgn-rt {
+        min-height: 400px;
+    }
+}
+
+/*customer search with listing start*/
+.btn-icon-cus-img {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0;
+}
+
+.badge-label:before {
+    top: 1px;
+}
+
+.image-respnsv {
+    width: 10%;
+    height: auto;
+}
+
+/*customer search with listing end*/
+
+/*gopi styles*/

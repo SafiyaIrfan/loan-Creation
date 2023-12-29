@@ -1,0 +1,65 @@
+<div class="mt-5">
+    <app-search-customer-list> </app-search-customer-list>
+    <div class="row g-3">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class=" align-items-center d-flex">
+                    <h2 class="subHead mb-0 flex-grow-1">Customer List</h2>
+                </div>
+                <div class="card-body">
+                    <div class="live-preview">
+                        <div class="table-responsive">
+                            <table class="table align-middle table-nowrap mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Active Loans</th>
+                                        <th scope="col">Outstanding Amount</th>
+                                        <th scope="col">Form Number</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of customerDetails">
+                                        <td scope="row">
+                                            <a (click)="onCustomerClick(item)" class="fw-medium ">
+                                                {{item.customer_id}}
+                                            </a>
+                                        </td>
+                                        <td>{{item.customer_name}}</td>
+                                        <td>{{item.active_loans}}</td>
+                                        <td>₹{{item.outstanding_amt}}</td>
+                                        <td>{{item.form_no}}</td>
+                                        <td>
+
+                                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                aria-label="Example icon-button with a menu">
+                                                <mat-icon>more_horiz</mat-icon>
+                                            </button><i></i>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item>
+                                                    <mat-icon>edit</mat-icon>
+                                                    <span>Edit</span>
+                                                </button>
+
+                                                <button mat-menu-item>
+                                                    <mat-icon>delete</mat-icon>
+                                                    <span>Delete</span>
+                                                </button>
+                                            </mat-menu>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div><!-- end card-body -->
+            </div><!-- end card -->
+        </div>
+        <!-- end col -->
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="wrapper ">
+  <span (click)="dialogRef.close()" ><mat-icon matTooltip="Close"> close</mat-icon></span>
+  <mat-tab-group>
+    <mat-tab label="Check Amount"  class="zero-letter-spacing">
+      <app-calculator></app-calculator>
+    </mat-tab>
+    <mat-tab label="Check Weight"  class="zero-letter-spacing" >
+      <app-calculate-weight></app-calculate-weight>
+    </mat-tab>
+  </mat-tab-group>
+</div>

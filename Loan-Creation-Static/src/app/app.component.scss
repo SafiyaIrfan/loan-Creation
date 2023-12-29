@@ -1,0 +1,14 @@
+.fab-btn {
+    position: fixed;
+    right: 5px;
+    top: 270px;
+    z-index: 1;
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+    z-index: 999;
+}
+
+.full-screen-modal .mat-dialog-container {
+    max-width: none;
+  }

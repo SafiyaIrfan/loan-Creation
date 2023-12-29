@@ -1,0 +1,19 @@
+<div class="main">
+    <div>
+        <img src="../../../../../assets/images/demos/dashboard1.png" class="image">
+    </div>
+    <button (click)="clickMenu()" type="button" class="fab-btn" data-bs-toggle="modal" matTooltip="Customer search">
+        <div class="customer-search">
+            <img src="assets/images/fab-c-srch.png">
+        </div>
+    </button>
+    <button mat-mini-fab class="action-button one mat-elevation-z8" *ngIf="openMenu" color="basic"
+        (click)="customerSearch()">
+        <i class="material-icons">face</i>
+    </button>
+
+    <button mat-raised-button class="label labelone mat-elevation-z8" *ngIf="openMenu" color="basic"
+        (click)="customerSearch()">
+        Customer Search
+    </button>
+</div>

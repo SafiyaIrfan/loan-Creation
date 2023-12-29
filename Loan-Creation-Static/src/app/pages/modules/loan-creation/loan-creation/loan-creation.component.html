@@ -1,0 +1,253 @@
+<div class="maindiv">
+
+    <h2 class="h2_"><i class="mdi mdi-adjust fs-18"></i> Loan Creation <i class="mdi mdi-star-outline fs-22"></i></h2>
+    <div class="cust-photo cursor-pointer" *ngIf="customerSelected">
+        <div class="cust-icn">
+            <span class="spinner-grow flex-shrink-0 text-warning _ic">
+                <i
+                    class="mdi mdi-progress-alert fs-18 text-white position-absolute top-50 start-50 translate-middle"></i>
+            </span>
+        </div>
+        <img [src]="customerSelected.image" class="avatar-sm rounded-circle" alt="rounded-circle"
+            matTooltip="Customer Details" (click)="myFunction($event)">
+           
+    </div>
+    <div #detailsSection class="clk-drp text-center p-4 cursor-pointer" *ngIf="showDetails && customerSelected">
+        <!-- <img [src]="customerSelected.image" class="avatar-md rounded-circle mb-3" alt="rounded-circle"> -->
+        <img src="{{customerSelected.customerName | userLetterIcons}}" alt="Circle Image"
+        class="img-circle img-no-padding img-responsive letter-icon" />
+        <h5>{{customerSelected.customerName | titlecase }} <span
+                class="badge rounded-pill badge-soft-info">{{customerSelected.customerId}}
+            </span></h5>
+          
+        <p>
+            <a><span class="badge text-bg-warning fs-10"> {{customerSelected.ActiveLoans.id.length}} </span> Active Loans, </a>
+            <a><span class="risk-fnt" [ngClass]="{ 'ribbon-two-success': customerSelected.riskType == 'Low',
+                                                    'ribbon-two-danger': customerSelected.riskType == 'High',
+                                                    'ribbon-two-warning' : customerSelected.riskType == 'Medium'}">
+                                                    {{customerSelected.riskType}} Risk</span></a><br>
+            <a><span class="text-primary"> Check Auction History, </span></a>
+            <a><span class="text-primary"><span class="badge text-bg-danger fs-10"> 01 </span> O/S List</span></a>
+        </p>
+        <span class="badge rounded-pill badge-outline-primary fs-11"> ! Aadhar Note Updated Yet </span>
+    </div>
+    <button (click)="clickMenu()" type="button" class="fab-btn" data-bs-toggle="modal" 
+        matTooltip="Customer search">
+        <div  class="customer-search">
+            <img src="assets/images/fab-c-srch.png">
+        </div>
+    </button>
+    <button mat-mini-fab class="action-button one mat-elevation-z8" *ngIf="openMenu" color="basic"
+        (click)="customerSearch()">
+        <i class="material-icons">face</i>
+    </button>
+
+    <button mat-raised-button class="label labelone mat-elevation-z8" *ngIf="openMenu" color="basic"
+        (click)="customerSearch()">
+        Customer Search
+    </button>
+    <div class="card">
+        <form [formGroup]="loanform">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="form-floating">
+                        <!-- <select class="form-select" aria-label="Select Product Type" (change)="onOptionSelected($event)"
+                            id="productType" name="productType" formControlName="productType"
+                            [ngClass]="{ 'is-invalid': loanform.controls['productType'].errors && loanform.controls['productType'].touched}"
+                            (click)="isCollapsed = false">
+                            <option selected disabled>Product Type</option>
+                            <option *ngFor="let obj of productName" [value]="obj.PROD_TYPEID">{{
+                                obj.PTYPE_SHORT_NAME }}
+                            </option>
+                        </select> -->
+                        <app-search-dropdown #productTypeModel  [items]="productTypeData" formControlName="productType" (ngModelChange)="onOptionSelected($event)">
+                        </app-search-dropdown>
+    
+
+                        <!-- <div class="select-container">
+                        <ng-select [items]="productArray" bindLabel="documentTypeName" formControlName="productType"
+                            (change)="onOptionSelected($event)" [clearable]="false" id="docType" appSpecialSymbols
+                            (mousedown)="onNgSelectTouched($event)" [multiple]="false" class="dropdown-list"
+                            groupBy="selectedAllGroup" appPreventAlphanumeric>
+                        </ng-select>
+                    </div> -->
+
+
+                        <div class="text-danger error"
+                            *ngIf="loanform.controls['productType'].errors && loanform.controls['productType'].touched ">
+                            Product Type is required
+                        </div>
+                        <label class="ng-select" for="productType">Product Type <span class="text-danger">*</span></label>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-floating">
+                        <select class="form-select" aria-label="Select Scheme" id="schemeName" name="schemeName"
+                            formControlName="schemeName"
+                            [ngClass]="{ 'is-invalid': loanform.controls['schemeName'].errors && loanform.controls['schemeName'].touched}">
+                            <option selected disabled>Select Scheme</option>
+                            <option *ngFor="let scheme of schemeName" [value]="scheme.SCHEMEID">{{
+                                scheme.SCHEME_NAME }}
+                            </option>
+                        </select>
+                        <div class="text-danger error"
+                            *ngIf="loanform.controls['schemeName'].errors&& loanform.controls['schemeName'].touched">
+                            Scheme is required
+                        </div>
+                        <label for="schemeName">Scheme <span class="text-danger">*</span></label>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <!-- <div class="row g-1"> -->
+                    <!-- <div class="col-lg-10"> -->
+                    <div class="form-floating">
+                        <select class="form-select" aria-label="Nature of Loan" id="natureLoan" name="natureLoan"
+                            formControlName="natureLoan"
+                            [ngClass]="{ 'is-invalid': loanform.controls['natureLoan'].errors && loanform.controls['natureLoan'].touched }">
+                            <option selected disabled>Nature of Loan</option>
+                            <option *ngFor="let nature of natureOfLoan" [value]="nature.id">{{ nature.nature
+                                | titlecase }}</option>
+                        </select>
+                        <div class="text-danger error"
+                            *ngIf="loanform.controls['natureLoan'].errors && loanform.controls['natureLoan'].touched">
+                            Nature of Loan is required
+                        </div>
+                        <label for="natureLoan">Nature of Loan <span class="text-danger">*</span></label>
+                    </div>
+                    <!-- </div> -->
+                    <!-- <div class="col-lg-2 d-flex justify-content-end">
+                        <button mat-mini-fab color="primary" [matTooltip]="!isCollapsed ? 'Less' : 'More'"
+                            class="custom-pointer" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">
+                            <mat-icon *ngIf="!isCollapsed">expand_less</mat-icon>
+                            <mat-icon *ngIf="isCollapsed">expand_more</mat-icon>
+                        </button>
+                    </div> -->
+                    <!-- </div> -->
+                    <!-- <div *ngIf="isCollapse1 == false" class="col-lg-12">
+                        <div class="form-floating">
+                            <select class="form-select" aria-label="Nature of Loan" id="natureLoan" name="natureLoan"
+                                formControlName="natureLoan"
+                                [ngClass]="{ 'is-invalid': loanform.controls['natureLoan'].errors && loanform.controls['natureLoan'].touched }">
+                                <option selected disabled>Nature of Loan</option>
+                                <option *ngFor="let nature of natureOfLoan" [value]="nature.id">{{ nature.nature
+                                    | titlecase }}</option>
+                            </select>
+                            <div class="text-danger error"
+                                *ngIf="loanform.controls['natureLoan'].errors && loanform.controls['natureLoan'].touched">
+                                Nature of Loan is required
+                            </div>
+                            <label for="natureLoan">Nature of Loan <span class="text-danger">*</span></label>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div style="margin-top: 8px;">
+                <div class="row g-4 pt-3">
+                    <div class="col-lg-4">
+                        <div class="form-floating">
+                            <select class="form-select" aria-label="Purpose" formControlName="purposeName"
+                                (change)="onPurposeChange( )" id="purposeName" name="purposeName"
+                                [ngClass]="{ 'is-invalid': loanform.controls['purposeName'].errors  && loanform.controls['purposeName'].touched}">
+                                <option selected disabled>Purpose</option>
+                                <option *ngFor="let purpose of purposeName" [value]="purpose.PURPOSE_ID">{{
+                                    purpose.PURPOSE_NAME | titlecase }}
+                            </select>
+                            <div class="text-danger error"
+                                *ngIf="loanform.controls['purposeName'].errors  && loanform.controls['purposeName'].touched">
+                                Purpose is required
+                            </div>
+                            <label for="purposeName">Purpose <span class="text-danger">*</span></label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4">
+                        <div class="form-floating">
+                            <select class="form-select" aria-label="Select Product Type"
+                                (change)="onSelectedCategoryChange($event)" id="selectCategory" name="selectCategory"
+                                formControlName="selectCategory"
+                                [ngClass]="{ 'is-invalid': loanform.controls['selectCategory'].errors && loanform.controls['selectCategory'].touched}"
+                                (click)="isCollapsed = false">
+                                <option selected disabled>--Select Category--</option>
+                                <option *ngFor="let type of category" [value]="type.CATEGORY_ID">{{
+                                    type.CATEGORY_NAME | titlecase }}
+                            </select>
+                            <div class="text-danger error"
+                                *ngIf="loanform.controls['selectCategory'].errors && loanform.controls['selectCategory'].touched">
+                                Category is required
+                            </div>
+                            <label for="selectCategory">Select Category</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 ">
+                        <div class="form-floating">
+                            <select class="form-select" aria-label="Select Sub Category"
+                                formControlName="selectSubCategory" placeholder="Select Sub Category"
+                                id="selectSubCategory" name="selectSubCategory"
+                                [ngClass]="{ 'is-invalid': loanform.controls['selectSubCategory'].errors && loanform.controls['selectSubCategory'].touched}">
+                                <option selected disabled>Select Sub Category</option>
+                                <option *ngFor="let sub of subCategory" [value]="sub.SUBCATEGORY_ID">{{
+                                    sub.SUBCATEGORY_NAME | titlecase }}
+                            </select>
+                            <div class="text-danger error"
+                                *ngIf="loanform.controls['selectSubCategory'].errors && loanform.controls['selectSubCategory'].touched">
+                                Sub category is required
+                            </div>
+                            <label for="selectSubCategory">Select Sub Category</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <button mat-raised-button color="primary"
+            (click)="isCollapse1 = !isCollapse1 && isCollapsed = true">Bluff</button>
+        isCollapse1: {{isCollapse1}} isCollapsed: {{isCollapsed}} -->
+        </form>
+    </div>
+
+
+    <mat-card>
+        <mat-tab-group class="mt-4" [selectedIndex]="selectedIndex" (selectedTabChange)="onTabChanged($event)">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <i class="mdi mdi-file-sign fs-22"></i>
+                    Gold / Item Details
+                </ng-template>
+
+                <app-gold-info #goldForm></app-gold-info>
+                <div class="col-lg-12 m_20">
+                    <button mat-raised-button color="primary" (click)="checkImage()">Next</button>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <i class="mdi mdi-tab-search fs-22"></i>
+                    Other Info
+                </ng-template>
+                <app-other-info #otherInfo></app-other-info>
+                <div class="col-lg-12 m_20">
+                    <button class="me-3" mat-raised-button color="primary" (click)="selectedIndex=0 ">Back</button>
+                    <button mat-raised-button color="primary" (click)="selectedIndex=2">Next</button>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <i class="mdi mdi-wallet-outline fs-22"></i>
+                    Payment Info
+                </ng-template>
+                <app-payment-details #paymentDetails></app-payment-details>
+                <div class="col-lg-12 m_20">
+                    <button class="me-3" mat-raised-button color="primary" (click)="selectedIndex=1">Back</button>
+                    <button type="button" mat-raised-button color="primary" class="saveBtn"
+                        (click)="onSaveAlert()">Save</button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>

@@ -1,0 +1,175 @@
+<div class="col-12">
+    <form [formGroup]="otherLoanInfo">
+        <div class="tab-pane" id="pay-dtls" role="tabpanel">
+            <div class="d-flex p_20">
+                <div class="flex-grow-1 mb-2 pt-4">
+                    <div class="row g-4">
+
+
+                        <div class="col-lg-4">
+                            <div class="form-floating">
+                                <select class="form-select" id="floatingSelect" aria-label="Payment Mode"
+                                    firstInputField formControlName="paymentMode" id="paymentMode" name="paymentMode"
+                                    (change)="onChangePayment()"
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['paymentMode'].errors || otherLoanInfo.controls['paymentMode'].errors && otherLoanInfo.controls['paymentMode'].touched }">
+                                    <option selected value="">Select</option>
+                                    <option *ngFor="let payement of paymentMode" [value]="payement.PAYMENT_MODE_ID">
+                                        {{payement.PAYMENT_MODE | titlecase}}</option>
+                                </select>
+                                <label for="paymentMode">Payment Mode <span class="text-danger">*</span></label>
+                            </div>
+                            <div *ngIf="submitted && otherLoanInfo.controls['paymentMode'].errors || otherLoanInfo.controls['paymentMode'].errors && otherLoanInfo.controls['paymentMode'].touched  "
+                                class="text-danger error">
+                                Payement mode
+                                is required
+                            </div>
+                        </div>
+                        <div class="col-lg-4 topHeight">
+                            <div class="form-floating">
+                                <select class="form-select" aria-label="Bank" formControlName="bank" id="bank"
+                                    name="bank" (change)="onChangeBank()"
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['bank'].errors || otherLoanInfo.controls['bank'].errors &&  otherLoanInfo.controls['bank'].touched  }">
+                                    <option selected value="">Select Bank</option>
+                                    <option *ngFor="let bank of bankDetails" [value]="bank.id">
+                                        {{bank.bankName | titlecase}}</option>
+
+                                </select>
+                                <label for="Bank">Bank Name <span class="text-danger">*</span></label>
+                            </div>
+                            <div *ngIf="submitted && otherLoanInfo.controls['bank'].errors ||  otherLoanInfo.controls['bank'].errors && otherLoanInfo.controls['bank'].touched "
+                                class="text-danger error">Bank is
+                                required
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 topHeight">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Account Number" maxlength="18"
+                                    formControlName="accNumber" id="accNumber" name="accNumber" appNumericOnly
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['accNumber'].errors && otherLoanInfo.controls['accNumber'].touched}">
+
+                                <label for="accNumber">Account Number <span class="text-danger">*</span></label>
+                                <div *ngIf="otherLoanInfo.controls['accNumber'].touched && otherLoanInfo.controls['accNumber'].errors?.['pattern']"
+                                    class="text-danger error">
+                                    Account Number is invalid
+                                </div>
+                                <div *ngIf="otherLoanInfo.controls['accNumber'].touched && otherLoanInfo.controls['accNumber'].hasError('required')"
+                                    class="text-danger error">
+                                    Account Number is required
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <div class="height"> -->
+                        <div class="col-lg-4 pt-2 topHeight ">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="IFSC Code"
+                                    formControlName="ifscCode" id="ifscCode" name="ifscCode"
+                                    oninput="this.value = this.value.toUpperCase()" appPreventAlphanumeric
+                                    maxlength="11" appIfscValidation
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['ifscCode'].errors || otherLoanInfo.controls['ifscCode'].errors && otherLoanInfo.controls['ifscCode'].touched || otherLoanInfo.controls['ifscCode'].errors?.['pattern'] }"
+                                    appIfscValidation>
+                                <label for="ifscCode">IFSC Code <span class="text-danger">*</span></label>
+                                <div *ngIf="otherLoanInfo.controls['ifscCode'].touched && otherLoanInfo.controls['ifscCode'].hasError('required')"
+                                    class="text-danger error">
+                                    IFSC code is required
+                                </div>
+
+                                <!-- <div *ngIf="submitted && otherLoanInfo.controls['ifscCode'].errors?.['required']"
+                                    class="text-danger error">IFSC Code is required
+                                </div> -->
+                                <!-- <span id="ifscNoInvalidError" class="text-danger error"
+                                    *ngIf="otherLoanInfo.controls['ifscCode'].errors?.['pattern']">
+                                    IFSC Code is Invalid
+                                </span> -->
+                                <div *ngIf="otherLoanInfo.controls['ifscCode'].touched && otherLoanInfo.controls['ifscCode'].errors?.['pattern']"
+                                    class="text-danger error">
+                                    IFSC code is invalid
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 pt-2 topHeight">
+                            <div class="form-floating d-flex">
+                                <input type="text" class="form-control " placeholder="Branch" formControlName="branch"
+                                    appAlphaNumSpcl id="branch" name="branch" appPreventAlphanumeric
+                                    appPreventInitialSpace
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['branch'].errors || otherLoanInfo.controls['branch'].errors && otherLoanInfo.controls['branch'].touched }">
+                                <label for="branch">Branch Name <span class="text-danger">*</span></label>
+                                <!-- <i *ngIf="otherLoanInfo.controls['branch'].valid"
+                                    class="mdi mdi-check-circle fs-24 text-success bd-highlight _ico"></i> -->
+                            </div>
+                            <div *ngIf="submitted && otherLoanInfo.controls['branch'].errors || otherLoanInfo.controls['branch'].errors && otherLoanInfo.controls['branch'].touched"
+                                class="text-danger error">
+                                Branch name is required
+                            </div>
+                        </div>
+                        <div class="col-lg-4 pt-2 topHeight">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Cash" formControlName="cash"
+                                    id="cash" name="cash" maxlength="11" appNumericOnly
+                                    [ngClass]="{ 'is-invalid': submitted && otherLoanInfo.controls['cash'].errors ||  otherLoanInfo.controls['cash'].errors &&  otherLoanInfo.controls['cash'].touched }">
+                                <label for="cash">Cash <span class="text-danger">*</span></label>
+                                <div *ngIf="submitted && otherLoanInfo.controls['cash'].errors || otherLoanInfo.controls['cash'].errors &&  otherLoanInfo.controls['cash'].touched"
+                                    class="text-danger error">
+                                    Cash is required
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                    </div>
+
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-3 height">
+                            <div class="alert alert-success alert-top-border alert-dismissible fade show mt-3">
+                                <i class="mdi mdi-wallet-travel fs-36 text-success"></i><br>
+                                <label style="margin: 0%;">Eligible Amount </label><br>
+                                <label for="" class="fs-18 text-primary">₹{{eligibleAmount | number:'1.2-2'}}/-</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 height">
+                            <div class="alert alert-success alert-top-border alert-dismissible fade show mt-3">
+                                <i class="mdi mdi-wallet fs-36 text-success"></i><br>
+                                <label style="margin: 0%;">Approved Amount </label><br>
+                                <label for="" class="fs-18 text-success">₹{{approvedAmount | number:'1.2-2'}}/-</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 height">
+                            <div class="alert alert-success alert-top-border alert-dismissible fade show mt-3 tooltip-outer-sec">
+                                <i class="mdi mdi-cash-multiple fs-36 text-success"></i>
+                                <br>
+                                <label style="margin: 0%;">Total Charges </label>
+                                
+                                <!-- <app-custom-tooltip class="text-primary" [tooltipText]="tooltipText"
+                                [tooltiptext]="tooltiptext" [showsTooltip]="tooltip"></app-custom-tooltip>
+                        -->
+                        
+                                <i class="mdi mdi-image-filter-tilt-shift fs-12 text-warning" (mouseover)="tooltip = true"
+                                    (mouseleave)="tooltip = true">
+                                   
+                                </i><br>
+                                <label for="" class="fs-18 text-warning">₹{{charges | number:'1.2-2'}}/-</label>
+                            </div>
+                            <div>
+                                 <app-custom-tooltip class="text-primary" [tooltipText]="tooltipText"
+                                [tooltiptext]="tooltiptext" [showsTooltip]="tooltip"></app-custom-tooltip>
+                       
+                            </div>
+                        </div>
+                        <div class="col-lg-3 height">
+                            <div class="alert alert-success alert-top-border alert-dismissible fade show mt-3">
+                                <i class="mdi mdi-firebase fs-36 text-success"></i><br>
+                                <label style="margin: 0%;">Net Amount </label><br>
+                                <label for="" class="fs-18 text-primary">₹{{netAmount | number:'1.2-2'}}/-</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
